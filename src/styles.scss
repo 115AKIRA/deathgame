@@ -1,1 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
+
+@use '@angular/material' as mat;
+
+html {
+    @include mat.theme((
+      color: (
+        primary: mat.$violet-palette,
+        tertiary: mat.$rose-palette,
+        theme-type: light,
+        ),
+      typography: (
+        plain-family: Cardo,
+        bold-weight: 900,
+        medium-weight: 600,
+        regular-weight: 400,
+      ),
+      density: 0,
+    ));
+  }
+
+html, body { 
+    
+    height: 100%; 
+}
+
+body {
+
+    margin: 0; 
+    font-family: 'Cardo';
+
+ }
+
+ body p {
+
+    margin: 8px 4px;
+
+ }
+
+ header {
+  
+  background-color: yellow;
+
+ }
+
+ footer {
+
+  background-color: orange;
+
+ }
+
+ header, footer {
+
+  margin: 0;
+  padding: 4px;
+  text-align: center;
+
+ }

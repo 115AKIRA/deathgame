@@ -1,0 +1,32 @@
+<app-header></app-header>
+
+<p> Disclaimer ! </p>
+
+<p> 
+    This website contains short but sensitive, explicit textual content on the following topics : death by natural causes, murder, 
+    suicide, transforming into a monster and acts of cruelty. Thus, this content is not recommended for anyone under the age of 18.
+    This website however provides a censor option which slightly alters some texts to make them less brutal. 
+</p>
+
+<p> 
+    Additionally, this website requires essential cookies to function. No other cookies than session cookies will be collected.
+</p>
+
+<p> 
+    You'll be able to access the rest of the site by agreeing to essential cookies being collected and that you have been
+    warned about the sensitive content.   
+</p>
+
+<section>
+    <mat-checkbox (change)="toggleCensor()" [checked]="getIs_censored()"> 
+        Censor violent textual content ?
+    </mat-checkbox>
+</section>
+
+<p> DEBUG : [is_censored = {{ getIs_censored() }}]</p>
+
+<a routerLink="/home"> Home </a>
+
+<!-- add link to homepage. if session tokens are NOT collected upon accessing website, user will automatically be redirected here -->
+
+<app-footer></app-footer>

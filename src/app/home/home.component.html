@@ -1,0 +1,41 @@
+<app-header></app-header>
+
+<section>
+
+    <h2> Home! </h2>
+
+    <p> blablablablablabla </p>
+
+    <p> is_censored = {{ app.disclaimer.getIs_censored() }} </p>
+
+    <button (click)="app.disclaimer.toggleCensor()"> toggleCensor() </button>
+
+    <p> options = {{ getOptions() }} </p>
+
+    <p> personality = {{ getOptionWithName(getOptionNames()[0]) }} </p>
+
+    <p> relationships = {{ getOption(1) }} </p>
+
+    <p> transformation = {{ getOption(2) }} </p>
+
+    <div class="form-check" *ngFor="let optionName of getOptionNames(); index as i">
+        <mat-checkbox (change)="setOptionWithName(optionName)" [checked]="getOptionWithName(optionName)">
+            {{ i }} - {{ optionName }}
+        </mat-checkbox> 
+    </div>
+
+    <mat-form-field>
+        <mat-label>Scenario : </mat-label>
+        <mat-select [(value)]="select" (selectionChange)="setSelect(select)">
+          <mat-option value="termina"> Fear & Hunger 2 : Termina </mat-option>
+          <mat-option value="copa"> Corpse Party </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <p>You selected: {{getSelect()}}</p>
+
+    <a routerLink="/scenario"> Edit scenario </a>
+
+</section>
+
+<app-footer></app-footer>

@@ -1,0 +1,114 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <mat-form-field>
+
+        <mat-label> Internal Name : </mat-label>  
+        <input matInput type="text" formControlName="name"/>
+
+    </mat-form-field>
+
+    <mat-form-field>
+
+        <mat-label> Title: </mat-label> 
+        <input matInput type="text" formControlName="title"/>
+
+    </mat-form-field>
+
+    <h2> Contestants : </h2> 
+
+    <div formArrayName="contestants">    
+
+        <mat-form-field>
+            <mat-label> Number of contestants : </mat-label>    
+            <input matInput type="number" step="1" [(ngModel)]="numberContestant" 
+        [ngModelOptions]="{standalone: true}" (change)="addContestants(numberContestant)"/>
+        </mat-form-field>
+
+        <div *ngFor ="let contestant of contestants.controls; let i=index">
+
+            <div [formGroupName]="i">
+
+                <mat-form-field>
+                
+                    <mat-label> ID : </mat-label>         
+                    <input matInput type="text" formControlName="id"/>
+
+                </mat-form-field>
+
+
+                <mat-form-field>
+
+                    <mat-label> Name : </mat-label>          
+                    <input matInput type="text" formControlName="name"/>
+
+                </mat-form-field>
+
+                <mat-form-field>
+
+                    <mat-label> Pronouns : </mat-label>  
+                    <mat-select formControlName="pronouns">
+                        <mat-option value="he"> He/Him </mat-option>
+                        <mat-option value="she"> She/Her </mat-option>
+                        <mat-option value="they"> They/Them </mat-option>
+                        <mat-option value="it"> It/Its </mat-option>
+                    </mat-select>
+
+                </mat-form-field>
+                
+                <mat-form-field>
+
+                    <mat-label> Image : </mat-label>         
+                    <input matInput type="text" formControlName="image" />
+
+                </mat-form-field>
+
+                <mat-form-field>
+
+                    <mat-label> Personality traits : </mat-label>          
+                    <input matInput type="text" formControlName="personality" />
+
+                </mat-form-field>
+   
+                <button mat-stroked-button type="button" (click)="removeContestantByIndex(i)"> Remove contestant </button> 
+
+            </div>  
+
+        </div>
+        
+    </div>
+
+    <div formArrayName="events">
+
+        <div formArrayName="bloodbath">
+
+            <h4> Bloodbaths ! </h4>
+
+            <mat-form-field>
+                <mat-label> Number of bloodbaths : </mat-label>    
+                <input matInput type="number" step="1" [(ngModel)]="numberEvents[1]" 
+                [ngModelOptions]="{standalone: true}" (change)="addEvents(numberEvents[1])"/>
+            </mat-form-field>
+
+            <!--
+            <div *ngFor ="let blood of bloodbath.controls; let j=index">
+
+                <h6> hi!!!! </h6>
+
+                <button mat-stroked-button type="button" (click)="removeEventByIndex(j)"> Remove event </button> 
+
+            </div>
+            -->
+
+        </div>
+
+    </div>
+
+    <button mat-stroked-button type="button" (click)="saveContestants('termina2.json')"> Export scenario </button>
+
+    <p>Complete the form to enable button.</p>  
+    <button mat-stroked-button type="submit" [disabled]="!form.valid">Submit</button>
+
+    <p> {{ test() }} </p>
+
+
+</form>
