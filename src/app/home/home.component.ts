@@ -22,19 +22,39 @@ import { RouterLink } from '@angular/router';
 })
 export class HomeComponent {
 
-  public app = new AppComponent();
+  /**
+   * Creates an iteration of the AppComponent class, used to access DisclaimerComponent's methods
+   */
+  public app: AppComponent = new AppComponent();
 
-  private optionNames: Array<String> = ["Personality", "Relationship", "Transformation"];
+  /**
+   * Names of the options for the game in an array
+   */
+  private optionNames: Array<string> = ["Personality", "Relationship", "Transformation"];
+
+  /**
+   * Bitmap of the options selected for the game.
+   * 2^2 = transformations ; 2^1 = relationships ; 2^0 = personality ;
+   */
   private options: number = 0b111; // 2^2 = transformations ; 2^1 = relationships ; 2^0 = personality ;
 
-  public select: string = "termina"; //scenario de base
+  /**
+   * Value of the Select input. Default is set to 'termina'.
+   */
+  public select: string = "termina";
 
-  public customName: string = "";
+  /**
+   * Custom scenario to be exported and used in the game.
+   * CURRENTLY UNIMPLEMENTED.
+   */
+  public customScenario: any;
 
-  public customScenario: Object;
-
+  /**
+   * @ignore
+   */
   constructor(private router: Router) {
 
+    //SESSION CHECK
     if (sessionStorage.getItem('options') == null) {
       this.options = 0b111;
       sessionStorage.setItem('options', JSON.stringify(this.options));
@@ -57,61 +77,92 @@ export class HomeComponent {
     }
   }
 
-  test() {
+  /**
+   * Test method to see the custom scenario, as an attempt to see how importing scenarions would work.
+   */
+  test(): void {
 
     console.log(this.customScenario);
 
   }
 
-  playGame() {
+  /**
+   * Redirects the user to the game's page.
+   */
+  playGame(): void {
 
     this.router.navigateByUrl('/game');
 
   }
 
-  isCustomScenarioExist() {
+  /**
+   * Checks if an imported scenario has been initialized.
+   * @returns True if an imported scenario exists, false otherwise.
+   */
+  isCustomScenarioExist(): boolean {
 
     return (!(this.customScenario == null));
 
   }
 
-  getCustomScenario() {
+  /**
+   * Getter of the custom scenario
+   * @returns Value of the custom scenario
+   */
+  getCustomScenario(): any {
     return this.customScenario;
   }
 
-  getOptions(): Number {
+  /**
+   * Get the value of 'options' from the session.
+   * @returns The bitmap options.
+   */
+  getOptions(): number {
 
     return Number(sessionStorage.getItem('options'));
 
   }
 
-  getOption(option: number): Boolean {
+  /**
+   * Uses bitwise operators to verify if a specific option in the bitmap options has been set to true or false.
+   * @param option 2 = transformations ; 1 = relationships ; 0 = personality ;
+   * @returns The value of the specific option
+   */
+  getOption(option: number): boolean {
     return Boolean(this.options & (0b1 << (option)));
   }
 
-  getOptionWithName(option: String): Boolean {
-    return this.getOption(this.optionNames.indexOf(option));
-  }
-
-  getOptionNames(): Array<String> {
+  /**
+   * Gets all the names of the options.
+   * @returns The array containing all the names of each option.
+   */
+  getOptionNames(): Array<string> {
     return this.optionNames;
   }
 
+  /**
+   * Uses bitwise operators to toggle a specific option to its opposite value in the bitmap options.
+   * @param option 2 = transformations ; 1 = relationships ; 0 = personality ;
+   */
   setOption(option: number): void {
     this.options = (this.options ^ (0b1 << (option)));
     sessionStorage.setItem('options', JSON.stringify(this.options));
   }
 
-  setOptionWithName(option: String): void {
-    this.setOption(this.optionNames.indexOf(option));
-  }
-
-  getSelect(): String {
+  /**
+   * Get from the session the scenario selected
+   * @returns Internal name of the scenario selected
+   */
+  getSelect(): string {
 
     return String(sessionStorage.getItem("scenario_selected")).replace(/"/g, '');
 
   }
 
+  /**
+   * Uses a string as a key to return an Int as a value, used to hide certain inputs on the page.
+   * @returns Int value representing which scenario has been selected
+   */
   getSelectAsInt(): number {
 
     if(this.select == 'termina') {
@@ -126,7 +177,11 @@ export class HomeComponent {
 
   }
 
-  setSelect(select: string) {
+  /**
+   * Set in the session the scenario selected
+   * @param select Internal name of the scenario selected
+   */
+  setSelect(select: string): void {
 
     this.select = select;
     sessionStorage.setItem('scenario_selected', JSON.stringify(this.select));

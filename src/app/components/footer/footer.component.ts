@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 
+/**
+ * @ignore
+ */
+
 @Component({
   selector: 'app-footer',
   imports: [],

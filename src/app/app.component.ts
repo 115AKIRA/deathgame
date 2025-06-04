@@ -14,12 +14,20 @@ import { HeaderComponent } from './components/header/header.component';
 
 export class AppComponent {
 
-  title = 'deathgame';
+  /**
+   * Title of the app in the web browser
+   */
+  title: string = 'deathgame';
 
+  /**
+   * Creates an iteration of the DisclaimerComponent class, used to access its methods
+   */
   disclaimer = new DisclaimerComponent;
 
-  constructor() {
 
-  }
+  /**
+   * @ignore
+   */
+  constructor() {}
 
 }

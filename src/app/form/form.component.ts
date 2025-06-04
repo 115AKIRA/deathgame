@@ -12,22 +12,6 @@ import { NgFor } from '@angular/common';
 import * as termina from '../../../public/scenarios/termina.json';
 import * as copa from '../../../public/scenarios/copa.json';
 
-interface Scenario {
-
-  name: String,
-  title: String,
-  contestants: {
-    id: Number,
-    name: String,
-    image: String,
-    personality: Array<String>
-  },
-  terminology: {
-    
-  }
-    
-}
-
 @Component({
   selector: 'app-form',
   imports: [ReactiveFormsModule, NgFor, FormsModule, MatFormFieldModule, MatSelectModule, MatInputModule, 
@@ -39,44 +23,82 @@ interface Scenario {
 
 export class FormComponent {
 
-  scenario_chosen = "termina";
+  /**
+   * Internal name of the scenario selected to be edited in the form. Default value is 'termina'.
+   */
+  scenario_selected: string = "termina";
 
+
+  /**
+   * Data of the .json file used for the form. Default is 'termina.json'.
+   */
   data: any = termina;
 
+  /**
+   * JS object used when the scenario selected is to make a new one. Default value is an empty object.
+   */
   custom: any = {};
 
-  readonly: Boolean = true;
+  /**
+   * FormBuilder used for the form, to add new elements to the form.
+   */
+  private formBuilder: FormBuilder = inject(FormBuilder);
 
-  private formBuilder = inject(FormBuilder);
-
+  /**
+   * Variable used for the form itself.
+   */
   form: FormGroup;
 
+  /**
+   * Used to determine which section of the form is visible. Can be changed using a Select input.
+   */
   visible: string = "contestant";
 
+  /**
+   * Used for debug purposes, shows debug information.
+   */
   debug: boolean = false;
 
+  /**
+   * Number of contestants in the form.
+   */
   numberContestant: number = 0
+
+  /**
+   * Array containing the number of events in the form.
+   * index = 0 : number of events (unused)
+   * index = 1 : number of bloodbaths
+   * index = 2 : number of days
+   * index = 3 : number of specials
+   */
   numberEvents: Array<number> = [0, 0, 0, 0];
 
+  /**
+   * Array containing the number of events inside the specials section
+   */
   numberSpecials: Array<number> = [];
 
+  /**
+   * @ignore
+   */
   constructor(private router: Router) {
 
+    // SESSION CHECK
     if(!(sessionStorage.getItem('scenario') == null)) {
       this.custom = JSON.parse(String(sessionStorage.getItem('scenario')));
     } 
 
-    if(!(sessionStorage.getItem('scenario_chosen') == null)) {
+    if(!(sessionStorage.getItem('scenario_selected') == null)) {
 
-      this.scenario_chosen = this.getScenarioChosen() ?? "termina";
+      this.scenario_selected = this.getScenarioSelected() ?? "termina";
 
     }
 
-    if(this.scenario_chosen == "termina") {
+    if(this.scenario_selected == "termina") {
       this.data = termina;
-    } else if (this.scenario_chosen == "copa") {
+    } else if (this.scenario_selected == "copa") {
       this.data = copa;
-    } else if (this.scenario_chosen == "new") {
+    } else if (this.scenario_selected == "new") {
       this.data = this.custom;
     }
 
@@ -97,15 +119,10 @@ export class FormComponent {
       }
     }
 
+    //basic form
     this.form = this.formBuilder.group({
       name: [this.data.name],
       title: [this.data.title],
-      /*
-      contestants: this.formBuilder.group({
-        street: [''],
-        city: ['']
-      }),
-      */
       contestants: this.formBuilder.array([]),
 
       events: this.formBuilder.group({
@@ -127,89 +144,122 @@ export class FormComponent {
     this.addEvents(this.numberEvents[2], 1);
     this.addEvents(this.numberEvents[3], 2);
 
-    /*
-
-    for(let i: number = 0; i < this.data.events.special.length; i++ ) {
-      if(this.numberSpecials[i] == null) {
-        this.numberSpecials[i] = 0;
-      }
-      for(let j: number = 0; j < this.data.events.special[i].events.length; j++ ) {
-        this.addSpecialEvent(i);
-        this.numberSpecials[i] += 1;
-      }
-    }
-
-    */
-
   }
 
-  scenarioChange(scenario_chosen: string) {
+  /**
+   * Changes the scenario whose data will be used to fill the form. Used on the Select input.
+   * @param {string} scenario_selected Internal name of the scenario selected
+   */
+  scenarioChange(scenario_selected: string): void {
 
-    sessionStorage.setItem('scenario_chosen',scenario_chosen);
+    sessionStorage.setItem('scenario_selected', scenario_selected);
     window.location.reload();
 
   }
 
-  getScenarioChosen() {
+  /**
+   * Gets from the session the scenario selected for the form. Getter
+   * @returns {string} Internal name of the scenario selected
+   */
+  getScenarioSelected(): string {
 
-    if (!(sessionStorage.getItem('scenario_chosen') == null)) {
-      return sessionStorage.getItem('scenario_chosen');
+    if (!(sessionStorage.getItem('scenario_selected') == null)) {
+      return String(sessionStorage.getItem('scenario_selected')).replace(/"/g, '');
     } else {
       return "termina";
     }
 
   }
 
-  isCustomScenarioExist() {
+  /**
+   * Checks to see if an scenario imported by the user exists
+   * @returns True if a scenario imported by the user exists, false otherwise
+   */
+  isCustomScenarioExist(): boolean {
 
     return (!(this.custom == null));
 
   }
 
-  toggleDebug() {
+  /**
+   * Toggles the 'debug' variable. 
+   */
+  toggleDebug(): void {
     this.debug = !this.debug;
   }
 
-  test() {
+  /**
+   * Used to see, as a string, the data behind the form. This data changes dynamically based on your input on the form.
+   * @returns Value of the form cast as a string.
+   */
+  test(): string {
     return JSON.stringify(this.form.value);
   }
 
-  updateProfile() {    
-    this.form.patchValue({      
-      name: 'Nancy',
-    }); 
-  }
-
-  get contestants() {   
+  /**
+   * Get the 'contestants' Array from the form
+   * @returns Contestants Array
+   */
+  get contestants(): FormArray {   
     return this.form.get('contestants') as FormArray;  
   }
 
-  getPersonalityByIndex(index: number) {
+  /**
+   * Gets the contestant's personality (an Array) from the form, based on the index of the contestant on the form
+   * @param index Index of the contestant on the form's array
+   * @returns Personality Array
+   */
+  getPersonalityByIndex(index: number): FormArray {
     return this.contestants.at(index).get('personality') as FormArray;
   }
 
+  /**
+   * Get the 'events' Group from the form
+   * @returns Events Group
+   */
   get events() {
     return this.form.get('events') as FormGroup;
   }
 
+  /**
+   * Get the 'bloodbath' Array from the form
+   * @returns Bloodbath Array
+   */
   get bloodbath() { 
     return this.events.get('bloodbath') as FormArray;
   }
 
+  /**
+   * Get the 'day' Array from the form
+   * @returns Day Array
+   */
   get day() {   
     return this.events.get('day') as FormArray;
   }
 
+  /**
+   * Get the 'special' Array from the form
+   * @returns Special Array
+   */
   get special() {   
     return this.events.get('special') as FormArray;  
   }
 
+   /**
+   * Gets the 'special event' Array within the special array, based on the index of the special array on the form
+   * @param index Index of the special on the form's array
+   * @returns Special Event Array
+   */
   getSpecEventFromIndex(index: number) {
     return this.special.at(index).get('events') as FormArray;
   }
 
-
-  eventKey(i: number) {
+  /**
+   * Returns the name of one of the types of events based on its key
+   * @param i Key of the type of event
+   * @returns Value of the type of event
+   */
+  eventKey(i: number): string {
     switch(i) {
       case 0: return "bloodbath";
       case 1: return "day";
@@ -218,16 +268,13 @@ export class FormComponent {
     }
   }
 
-  eventKeyArray(i: number) {
-    switch(i) {
-      case 0: return this.bloodbath;
-      case 1: return this.day;
-      case 2: return this.special;
-      default: return [];
-    }
-  }
-
-  addContestant(index: number) {
+  /**
+   * Add a contestant on the last index of the Contestant array on the form.
+   * If data inside the JSON file provided for the form exists for the contestant, this data will be set on the form's input.
+   * Else, the inputs will have a default value.
+   * @param index Index of the contestant within the JSON file
+   */
+  addContestant(index: number): void {
 
     let id: string = '';
     let name: string = '';
@@ -280,7 +327,13 @@ export class FormComponent {
     this.contestants.push(contestantForm);  
   }
 
-  addContestants(nb: number) {
+  /**
+   * Adds or remove multiple contestants. 
+   * Checks for the total amount of contestants on the form's array before setting the amount of contestants on the array to
+   * the number provided as parameter.
+   * @param nb Number of contestants to be present on the contestants Array
+   */
+  addContestants(nb: number): void {
 
     let len = this.contestants.length;
 
@@ -298,51 +351,30 @@ export class FormComponent {
 
   }
 
+  /**
+   * Removes a contestant from the form's array at the last index.
+   */
   removeContestant() {    
     this.contestants.removeAt(this.contestants.length - 1);
   }
 
+  /**
+   * Removes a contestant from the form's array at the index specified.
+   * @param index Index on the array relating to the contestant who should be removed.
+   */
   removeContestantByIndex(index: number) {    
     this.contestants.removeAt(index);
     this.numberContestant -= 1;
   }
 
-  addEvents(nb: number, type: number) {
-
-    let eventKey = this.eventKey(type);
-
-    let len = 0;
-
-    if (eventKey == "special") {
-      len = this.special.length;
-    } else if (eventKey == "day") {
-      len = this.day.length;
-    } else if (eventKey == "bloodbath") {
-      len = this.bloodbath.length;
-    }
-  
-    if (nb < len ) {
-      while (nb < len) {
-        this.removeEvent(type)
-        nb++;
-      }
-    } else {
-        while(nb > len) {
-
-          if (eventKey == "special") {
-            this.addEvent(this.special.length, type);
-          } else if (eventKey == "day") {
-            this.addEvent(this.day.length, type);
-          } else if (eventKey == "bloodbath") {
-            this.addEvent(this.bloodbath.length, type);
-          }
-          nb--;
-        }
-    } 
-
-  }
-
-  addEvent(index: number, type: number) {
+  /**
+   * Add an event (bloodbath, day or special) on the last index of their respective array on the form.
+   * If data inside the JSON file provided for the form exists for the events, this data will be set on the form's input.
+   * Else, the inputs will have a default value.
+   * @param index Index of the event within the JSON file
+   * @param type Type of event (0: Bloodbath ; 1: Day ; 2: Special)
+   */
+  addEvent(index: number, type: number): void {
 
     let eventKey = this.eventKey(type);
 
@@ -437,7 +469,53 @@ export class FormComponent {
 
   }
 
-  removeEvent(type: number) {
+   /**
+   * Adds or remove multiple events based on their type. 
+   * Checks for the total amount of events of a certain type on the form's array before setting the amount of events on the array to
+   * the number provided as parameter.
+   * @param nb Number of events of a certain type to be present on their respective Array
+   * @param type Type of event (0: Bloodbath ; 1: Day ; 2: Special)
+   */
+  addEvents(nb: number, type: number) {
+
+    let eventKey = this.eventKey(type);
+
+    let len = 0;
+
+    if (eventKey == "special") {
+      len = this.special.length;
+    } else if (eventKey == "day") {
+      len = this.day.length;
+    } else if (eventKey == "bloodbath") {
+      len = this.bloodbath.length;
+    }
+  
+    if (nb < len ) {
+      while (nb < len) {
+        this.removeEvent(type)
+        nb++;
+      }
+    } else {
+        while(nb > len) {
+
+          if (eventKey == "special") {
+            this.addEvent(this.special.length, type);
+          } else if (eventKey == "day") {
+            this.addEvent(this.day.length, type);
+          } else if (eventKey == "bloodbath") {
+            this.addEvent(this.bloodbath.length, type);
+          }
+          nb--;
+        }
+    } 
+
+  }
+
+  /**
+   * Removes a event based on its type from the form's array at the last index.
+   * @param type Type of event (0: Bloodbath ; 1: Day ; 2: Special)
+   */
+  removeEvent(type: number): void {
 
     let eventKey = this.eventKey(type);
 
@@ -451,7 +529,12 @@ export class FormComponent {
 
   }
   
-  removeEventByIndex(type: number, index: number) {
+  /**
+   * Removes a event based on its type from the form's array at the index provided in parameters.
+   * @param type Type of event (0: Bloodbath ; 1: Day ; 2: Special)
+   * @param index Index on the array relating to the event of a certain type which should be removed.
+   */
+  removeEventByIndex(type: number, index: number): void {
     
     let eventKey = this.eventKey(type);
 
@@ -467,7 +550,14 @@ export class FormComponent {
 
   }
 
-  addSpecialEvent(eventIndex: number, index: number) {
+  /**
+   * Add an sub-event inside the 'special' array on the last index available for the sub-event in question.
+   * If data inside the JSON file provided for the form exists for the sub-events, this data will be set on the form's input.
+   * Else, the inputs will have a default value.
+   * @param eventIndex Index of the special event this sub-event is the child of
+   * @param index Index of the sub-event
+   */
+  addSpecialEvent(eventIndex: number, index: number): void {
 
     let id: string = '';
     let description: string = '';
@@ -497,7 +587,14 @@ export class FormComponent {
 
   }
 
-  addSpecialEvents(eventIndex: number, nb: number) {
+  /**
+   * Adds or remove multiple sub-events based on their index in the special array 
+   * Checks for the total amount of sub-events on the form's array before setting the amount of events on the array to
+   * the number provided as parameter.
+   * @param eventIndex Index of the special event this sub-event is the child of
+   * @param nb Number of sub-events to be present on the special event's Array
+   */
+  addSpecialEvents(eventIndex: number, nb: number): void {
 
     let len = this.getSpecEventFromIndex(eventIndex).length;
 
@@ -515,12 +612,21 @@ export class FormComponent {
 
   }
 
-  removeSpecialEvent(eventIndex: number) {
+  /**
+   * Removes a sub-event based on its index in the specia array from the form's array at the last index.
+   * @param eventIndex Index of the special event this sub-event is the child of.
+   */
+  removeSpecialEvent(eventIndex: number): void {
 
     this.getSpecEventFromIndex(eventIndex).removeAt(this.getSpecEventFromIndex(eventIndex).length - 1);
 
   }
 
+  /**
+   * Removes a sub-event based on its index in the specia array from the form's array at the index specified.
+   * @param eventIndex Index of the special event this sub-event is the child of.
+   * @param index Index of the sub-event within the special event
+   */
   removeSpecialEventByIndex(eventIndex: number, index: number) {
 
     this.getSpecEventFromIndex(eventIndex).removeAt(index);
@@ -529,7 +635,12 @@ export class FormComponent {
 
   }
 
-  onSubmit() {
+  /**
+   * If the form is valid, sets the form inside the session as 'scenario'.
+   * If debuf is activated, will show debug information in the console.
+   * Else, will redirect the user to the homepage.
+   */
+  onSubmit(): void {
     if (this.form.valid || 1) {
       sessionStorage.setItem('scenario', JSON.stringify(this.form.value));
       if(this.debug) {
@@ -542,8 +653,10 @@ export class FormComponent {
     }
   }
 
-  
-  saveContestants() {
+  /**
+   * Download the form as a JSON file.
+   */
+  saveScenario(): void {
     
     const json = this.form.value;
     const blob = new Blob([JSON.stringify(this.form.value)], { type: 'application/json' });

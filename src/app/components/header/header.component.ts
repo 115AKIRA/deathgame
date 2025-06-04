@@ -13,12 +13,20 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
 
-  hasBeenToHome() {
+
+  /**
+   * Checks if the user has accepted the disclaimer and has gone to the homepage once during this session
+   * @returns true or false depending on if the user reached the homepage
+   */
+  hasBeenToHome(): boolean {
 
     return (!(sessionStorage.getItem('options') == null));
 
   }
 
+  /**
+   * Creates an iteration of the AppComponent class, used to access DisclaimerComponent's methods
+   */
   public app = new AppComponent();
 
 }

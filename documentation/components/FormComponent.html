@@ -1,0 +1,3633 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>deathgame documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">deathgame documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  FormComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/form/form.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-form</code></td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>ReactiveFormsModule</code>
+                            <code>NgFor</code>
+                            <code>FormsModule</code>
+                            <code>MatFormFieldModule</code>
+                            <code>MatSelectModule</code>
+                            <code>MatInputModule</code>
+                            <code>MatButtonModule</code>
+                            <code>MatCheckboxModule</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./form.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./form.component.scss</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#custom" >custom</a>
+                            </li>
+                            <li>
+                                <a href="#data" >data</a>
+                            </li>
+                            <li>
+                                <a href="#debug" >debug</a>
+                            </li>
+                            <li>
+                                <a href="#form" >form</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#formBuilder" >formBuilder</a>
+                            </li>
+                            <li>
+                                <a href="#numberContestant" >numberContestant</a>
+                            </li>
+                            <li>
+                                <a href="#numberEvents" >numberEvents</a>
+                            </li>
+                            <li>
+                                <a href="#numberSpecials" >numberSpecials</a>
+                            </li>
+                            <li>
+                                <a href="#scenario_selected" >scenario_selected</a>
+                            </li>
+                            <li>
+                                <a href="#visible" >visible</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#addContestant" >addContestant</a>
+                            </li>
+                            <li>
+                                <a href="#addContestants" >addContestants</a>
+                            </li>
+                            <li>
+                                <a href="#addEvent" >addEvent</a>
+                            </li>
+                            <li>
+                                <a href="#addEvents" >addEvents</a>
+                            </li>
+                            <li>
+                                <a href="#addSpecialEvent" >addSpecialEvent</a>
+                            </li>
+                            <li>
+                                <a href="#addSpecialEvents" >addSpecialEvents</a>
+                            </li>
+                            <li>
+                                <a href="#eventKey" >eventKey</a>
+                            </li>
+                            <li>
+                                <a href="#getPersonalityByIndex" >getPersonalityByIndex</a>
+                            </li>
+                            <li>
+                                <a href="#getScenarioSelected" >getScenarioSelected</a>
+                            </li>
+                            <li>
+                                <a href="#getSpecEventFromIndex" >getSpecEventFromIndex</a>
+                            </li>
+                            <li>
+                                <a href="#isCustomScenarioExist" >isCustomScenarioExist</a>
+                            </li>
+                            <li>
+                                <a href="#onSubmit" >onSubmit</a>
+                            </li>
+                            <li>
+                                <a href="#removeContestant" >removeContestant</a>
+                            </li>
+                            <li>
+                                <a href="#removeContestantByIndex" >removeContestantByIndex</a>
+                            </li>
+                            <li>
+                                <a href="#removeEvent" >removeEvent</a>
+                            </li>
+                            <li>
+                                <a href="#removeEventByIndex" >removeEventByIndex</a>
+                            </li>
+                            <li>
+                                <a href="#removeSpecialEvent" >removeSpecialEvent</a>
+                            </li>
+                            <li>
+                                <a href="#removeSpecialEventByIndex" >removeSpecialEventByIndex</a>
+                            </li>
+                            <li>
+                                <a href="#saveScenario" >saveScenario</a>
+                            </li>
+                            <li>
+                                <a href="#scenarioChange" >scenarioChange</a>
+                            </li>
+                            <li>
+                                <a href="#test" >test</a>
+                            </li>
+                            <li>
+                                <a href="#toggleDebug" >toggleDebug</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#contestants" >contestants</a>
+                                </li>
+                                <li>
+                                    <a href="#events" >events</a>
+                                </li>
+                                <li>
+                                    <a href="#bloodbath" >bloodbath</a>
+                                </li>
+                                <li>
+                                    <a href="#day" >day</a>
+                                </li>
+                                <li>
+                                    <a href="#special" >special</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addContestant"></a>
+                    <span class="name">
+                        <span ><b>addContestant</b></span>
+                        <a href="#addContestant"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>addContestant(index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="277"
+                                    class="link-to-prism">src/app/form/form.component.ts:277</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Add a contestant on the last index of the Contestant array on the form.
+If data inside the JSON file provided for the form exists for the contestant, this data will be set on the form&#39;s input.
+Else, the inputs will have a default value.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>index</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Index of the contestant within the JSON file</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addContestants"></a>
+                    <span class="name">
+                        <span ><b>addContestants</b></span>
+                        <a href="#addContestants"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>addContestants(nb: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="336"
+                                    class="link-to-prism">src/app/form/form.component.ts:336</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Adds or remove multiple contestants.
+Checks for the total amount of contestants on the form&#39;s array before setting the amount of contestants on the array to
+the number provided as parameter.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>nb</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Number of contestants to be present on the contestants Array</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addEvent"></a>
+                    <span class="name">
+                        <span ><b>addEvent</b></span>
+                        <a href="#addEvent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>addEvent(index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, type: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="377"
+                                    class="link-to-prism">src/app/form/form.component.ts:377</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Add an event (bloodbath, day or special) on the last index of their respective array on the form.
+If data inside the JSON file provided for the form exists for the events, this data will be set on the form&#39;s input.
+Else, the inputs will have a default value.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>index</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Index of the event within the JSON file</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>type</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Type of event (0: Bloodbath ; 1: Day ; 2: Special)</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addEvents"></a>
+                    <span class="name">
+                        <span ><b>addEvents</b></span>
+                        <a href="#addEvents"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>addEvents(nb: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, type: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="479"
+                                    class="link-to-prism">src/app/form/form.component.ts:479</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Adds or remove multiple events based on their type.
+Checks for the total amount of events of a certain type on the form&#39;s array before setting the amount of events on the array to
+the number provided as parameter.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>nb</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Number of events of a certain type to be present on their respective Array</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>type</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Type of event (0: Bloodbath ; 1: Day ; 2: Special)</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addSpecialEvent"></a>
+                    <span class="name">
+                        <span ><b>addSpecialEvent</b></span>
+                        <a href="#addSpecialEvent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>addSpecialEvent(eventIndex: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="560"
+                                    class="link-to-prism">src/app/form/form.component.ts:560</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Add an sub-event inside the &#39;special&#39; array on the last index available for the sub-event in question.
+If data inside the JSON file provided for the form exists for the sub-events, this data will be set on the form&#39;s input.
+Else, the inputs will have a default value.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>eventIndex</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Index of the special event this sub-event is the child of</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>index</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Index of the sub-event</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addSpecialEvents"></a>
+                    <span class="name">
+                        <span ><b>addSpecialEvents</b></span>
+                        <a href="#addSpecialEvents"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>addSpecialEvents(eventIndex: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, nb: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="597"
+                                    class="link-to-prism">src/app/form/form.component.ts:597</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Adds or remove multiple sub-events based on their index in the special array
+Checks for the total amount of sub-events on the form&#39;s array before setting the amount of events on the array to
+the number provided as parameter.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>eventIndex</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Index of the special event this sub-event is the child of</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>nb</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Number of sub-events to be present on the special event&#39;s Array</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="eventKey"></a>
+                    <span class="name">
+                        <span ><b>eventKey</b></span>
+                        <a href="#eventKey"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>eventKey(i: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="262"
+                                    class="link-to-prism">src/app/form/form.component.ts:262</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Returns the name of one of the types of events based on its key</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>i</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Key of the type of event</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Value of the type of event</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getPersonalityByIndex"></a>
+                    <span class="name">
+                        <span ><b>getPersonalityByIndex</b></span>
+                        <a href="#getPersonalityByIndex"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getPersonalityByIndex(index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="212"
+                                    class="link-to-prism">src/app/form/form.component.ts:212</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Gets the contestant&#39;s personality (an Array) from the form, based on the index of the contestant on the form</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>index</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Index of the contestant on the form&#39;s array</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>FormArray</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Personality Array</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getScenarioSelected"></a>
+                    <span class="name">
+                        <span ><b>getScenarioSelected</b></span>
+                        <a href="#getScenarioSelected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getScenarioSelected()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="164"
+                                    class="link-to-prism">src/app/form/form.component.ts:164</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Gets from the session the scenario selected for the form. Getter</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Internal name of the scenario selected</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSpecEventFromIndex"></a>
+                    <span class="name">
+                        <span ><b>getSpecEventFromIndex</b></span>
+                        <a href="#getSpecEventFromIndex"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getSpecEventFromIndex(index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="253"
+                                    class="link-to-prism">src/app/form/form.component.ts:253</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Gets the &#39;special event&#39; Array within the special array, based on the index of the special array on the form</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>index</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Index of the special on the form&#39;s array</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>FormArray</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Special Event Array</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isCustomScenarioExist"></a>
+                    <span class="name">
+                        <span ><b>isCustomScenarioExist</b></span>
+                        <a href="#isCustomScenarioExist"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>isCustomScenarioExist()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="178"
+                                    class="link-to-prism">src/app/form/form.component.ts:178</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Checks to see if an scenario imported by the user exists</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>True if a scenario imported by the user exists, false otherwise</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSubmit"></a>
+                    <span class="name">
+                        <span ><b>onSubmit</b></span>
+                        <a href="#onSubmit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onSubmit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="643"
+                                    class="link-to-prism">src/app/form/form.component.ts:643</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>If the form is valid, sets the form inside the session as &#39;scenario&#39;.
+If debuf is activated, will show debug information in the console.
+Else, will redirect the user to the homepage.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeContestant"></a>
+                    <span class="name">
+                        <span ><b>removeContestant</b></span>
+                        <a href="#removeContestant"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>removeContestant()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="357"
+                                    class="link-to-prism">src/app/form/form.component.ts:357</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Removes a contestant from the form&#39;s array at the last index.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeContestantByIndex"></a>
+                    <span class="name">
+                        <span ><b>removeContestantByIndex</b></span>
+                        <a href="#removeContestantByIndex"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>removeContestantByIndex(index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="365"
+                                    class="link-to-prism">src/app/form/form.component.ts:365</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Removes a contestant from the form&#39;s array at the index specified.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>index</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Index on the array relating to the contestant who should be removed.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeEvent"></a>
+                    <span class="name">
+                        <span ><b>removeEvent</b></span>
+                        <a href="#removeEvent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>removeEvent(type: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="518"
+                                    class="link-to-prism">src/app/form/form.component.ts:518</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Removes a event based on its type from the form&#39;s array at the last index.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>type</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Type of event (0: Bloodbath ; 1: Day ; 2: Special)</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeEventByIndex"></a>
+                    <span class="name">
+                        <span ><b>removeEventByIndex</b></span>
+                        <a href="#removeEventByIndex"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>removeEventByIndex(type: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="537"
+                                    class="link-to-prism">src/app/form/form.component.ts:537</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Removes a event based on its type from the form&#39;s array at the index provided in parameters.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>type</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Type of event (0: Bloodbath ; 1: Day ; 2: Special)</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>index</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Index on the array relating to the event of a certain type which should be removed.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeSpecialEvent"></a>
+                    <span class="name">
+                        <span ><b>removeSpecialEvent</b></span>
+                        <a href="#removeSpecialEvent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>removeSpecialEvent(eventIndex: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="619"
+                                    class="link-to-prism">src/app/form/form.component.ts:619</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Removes a sub-event based on its index in the specia array from the form&#39;s array at the last index.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>eventIndex</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Index of the special event this sub-event is the child of.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeSpecialEventByIndex"></a>
+                    <span class="name">
+                        <span ><b>removeSpecialEventByIndex</b></span>
+                        <a href="#removeSpecialEventByIndex"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>removeSpecialEventByIndex(eventIndex: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="630"
+                                    class="link-to-prism">src/app/form/form.component.ts:630</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Removes a sub-event based on its index in the specia array from the form&#39;s array at the index specified.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>eventIndex</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Index of the special event this sub-event is the child of.</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>index</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Index of the sub-event within the special event</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="saveScenario"></a>
+                    <span class="name">
+                        <span ><b>saveScenario</b></span>
+                        <a href="#saveScenario"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>saveScenario()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="659"
+                                    class="link-to-prism">src/app/form/form.component.ts:659</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Download the form as a JSON file.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="scenarioChange"></a>
+                    <span class="name">
+                        <span ><b>scenarioChange</b></span>
+                        <a href="#scenarioChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>scenarioChange(scenario_selected: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="153"
+                                    class="link-to-prism">src/app/form/form.component.ts:153</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Changes the scenario whose data will be used to fill the form. Used on the Select input.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>scenario_selected</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Internal name of the scenario selected</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="test"></a>
+                    <span class="name">
+                        <span ><b>test</b></span>
+                        <a href="#test"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>test()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="195"
+                                    class="link-to-prism">src/app/form/form.component.ts:195</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Used to see, as a string, the data behind the form. This data changes dynamically based on your input on the form.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Value of the form cast as a string.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleDebug"></a>
+                    <span class="name">
+                        <span ><b>toggleDebug</b></span>
+                        <a href="#toggleDebug"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleDebug()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="187"
+                                    class="link-to-prism">src/app/form/form.component.ts:187</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Toggles the &#39;debug&#39; variable.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="custom"></a>
+                    <span class="name">
+                        <span ><b>custom</b></span>
+                        <a href="#custom"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/form/form.component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>JS object used when the scenario selected is to make a new one. Default value is an empty object.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="data"></a>
+                    <span class="name">
+                        <span ><b>data</b></span>
+                        <a href="#data"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>termina</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/form/form.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Data of the .json file used for the form. Default is &#39;termina.json&#39;.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="debug"></a>
+                    <span class="name">
+                        <span ><b>debug</b></span>
+                        <a href="#debug"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/form/form.component.ts:60</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Used for debug purposes, shows debug information.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="form"></a>
+                    <span class="name">
+                        <span ><b>form</b></span>
+                        <a href="#form"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormGroup</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/form/form.component.ts:50</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Variable used for the form itself.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formBuilder"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>formBuilder</b></span>
+                        <a href="#formBuilder"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormBuilder</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(FormBuilder)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/form/form.component.ts:45</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>FormBuilder used for the form, to add new elements to the form.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="numberContestant"></a>
+                    <span class="name">
+                        <span ><b>numberContestant</b></span>
+                        <a href="#numberContestant"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/app/form/form.component.ts:65</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Number of contestants in the form.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="numberEvents"></a>
+                    <span class="name">
+                        <span ><b>numberEvents</b></span>
+                        <a href="#numberEvents"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Array&lt;number&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[0, 0, 0, 0]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/app/form/form.component.ts:74</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Array containing the number of events in the form.
+index = 0 : number of events (unused)
+index = 1 : number of bloodbaths
+index = 2 : number of days
+index = 3 : number of specials</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="numberSpecials"></a>
+                    <span class="name">
+                        <span ><b>numberSpecials</b></span>
+                        <a href="#numberSpecials"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Array&lt;number&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/app/form/form.component.ts:79</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Array containing the number of events inside the specials section</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="scenario_selected"></a>
+                    <span class="name">
+                        <span ><b>scenario_selected</b></span>
+                        <a href="#scenario_selected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&quot;termina&quot;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/form/form.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Internal name of the scenario selected to be edited in the form. Default value is &#39;termina&#39;.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="visible"></a>
+                    <span class="name">
+                        <span ><b>visible</b></span>
+                        <a href="#visible"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&quot;contestant&quot;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/form/form.component.ts:55</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Used to determine which section of the form is visible. Can be changed using a Select input.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="contestants"></a>
+                        <span class="name"><b>contestants</b><a href="#contestants"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>contestants()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="203" class="link-to-prism">src/app/form/form.component.ts:203</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Get the &#39;contestants&#39; Array from the form</p>
+</div>
+
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code>FormArray</code>
+
+                                </div>
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="events"></a>
+                        <span class="name"><b>events</b><a href="#events"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>events()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="220" class="link-to-prism">src/app/form/form.component.ts:220</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Get the &#39;events&#39; Group from the form</p>
+</div>
+
+                                <div>
+                                </div>
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="bloodbath"></a>
+                        <span class="name"><b>bloodbath</b><a href="#bloodbath"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>bloodbath()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="228" class="link-to-prism">src/app/form/form.component.ts:228</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Get the &#39;bloodbath&#39; Array from the form</p>
+</div>
+
+                                <div>
+                                </div>
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="day"></a>
+                        <span class="name"><b>day</b><a href="#day"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>day()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="236" class="link-to-prism">src/app/form/form.component.ts:236</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Get the &#39;day&#39; Array from the form</p>
+</div>
+
+                                <div>
+                                </div>
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="special"></a>
+                        <span class="name"><b>special</b><a href="#special"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>special()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="244" class="link-to-prism">src/app/form/form.component.ts:244</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Get the &#39;special&#39; Array from the form</p>
+</div>
+
+                                <div>
+                                </div>
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ViewChild, ElementRef, inject, NgModule, ChangeDetectionStrategy } from &#x27;@angular/core&#x27;;
+import { FormGroup, FormControl, ReactiveFormsModule, FormBuilder, Validators, FormArray, FormsModule, AbstractControl } from &#x27;@angular/forms&#x27;;
+import { MatSelectModule } from &#x27;@angular/material/select&#x27;;
+import { MatInputModule } from &#x27;@angular/material/input&#x27;;
+import { MatFormFieldModule } from &#x27;@angular/material/form-field&#x27;;
+import { MatButtonModule } from &#x27;@angular/material/button&#x27;;
+import { MatCheckboxModule } from &#x27;@angular/material/checkbox&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+
+import { NgFor } from &#x27;@angular/common&#x27;;
+
+import * as termina from &#x27;../../../public/scenarios/termina.json&#x27;;
+import * as copa from &#x27;../../../public/scenarios/copa.json&#x27;;
+
+@Component({
+  selector: &#x27;app-form&#x27;,
+  imports: [ReactiveFormsModule, NgFor, FormsModule, MatFormFieldModule, MatSelectModule, MatInputModule, 
+    MatButtonModule, MatCheckboxModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: &#x27;./form.component.html&#x27;,
+  styleUrl: &#x27;./form.component.scss&#x27;
+})
+
+export class FormComponent {
+
+  /**
+   * Internal name of the scenario selected to be edited in the form. Default value is &#x27;termina&#x27;.
+   */
+  scenario_selected: string &#x3D; &quot;termina&quot;;
+
+
+  /**
+   * Data of the .json file used for the form. Default is &#x27;termina.json&#x27;.
+   */
+  data: any &#x3D; termina;
+
+  /**
+   * JS object used when the scenario selected is to make a new one. Default value is an empty object.
+   */
+  custom: any &#x3D; {};
+
+  /**
+   * FormBuilder used for the form, to add new elements to the form.
+   */
+  private formBuilder: FormBuilder &#x3D; inject(FormBuilder);
+
+  /**
+   * Variable used for the form itself.
+   */
+  form: FormGroup;
+
+  /**
+   * Used to determine which section of the form is visible. Can be changed using a Select input.
+   */
+  visible: string &#x3D; &quot;contestant&quot;;
+
+  /**
+   * Used for debug purposes, shows debug information.
+   */
+  debug: boolean &#x3D; false;
+
+  /**
+   * Number of contestants in the form.
+   */
+  numberContestant: number &#x3D; 0
+
+  /**
+   * Array containing the number of events in the form.
+   * index &#x3D; 0 : number of events (unused)
+   * index &#x3D; 1 : number of bloodbaths
+   * index &#x3D; 2 : number of days
+   * index &#x3D; 3 : number of specials
+   */
+  numberEvents: Array&lt;number&gt; &#x3D; [0, 0, 0, 0];
+
+  /**
+   * Array containing the number of events inside the specials section
+   */
+  numberSpecials: Array&lt;number&gt; &#x3D; [];
+
+  /**
+   * @ignore
+   */
+  constructor(private router: Router) {
+
+    // SESSION CHECK
+    if(!(sessionStorage.getItem(&#x27;scenario&#x27;) &#x3D;&#x3D; null)) {
+      this.custom &#x3D; JSON.parse(String(sessionStorage.getItem(&#x27;scenario&#x27;)));
+    } 
+
+    if(!(sessionStorage.getItem(&#x27;scenario_selected&#x27;) &#x3D;&#x3D; null)) {
+
+      this.scenario_selected &#x3D; this.getScenarioSelected() ?? &quot;termina&quot;;
+
+    }
+
+    if(this.scenario_selected &#x3D;&#x3D; &quot;termina&quot;) {
+      this.data &#x3D; termina;
+    } else if (this.scenario_selected &#x3D;&#x3D; &quot;copa&quot;) {
+      this.data &#x3D; copa;
+    } else if (this.scenario_selected &#x3D;&#x3D; &quot;new&quot;) {
+      this.data &#x3D; this.custom;
+    }
+
+    if(!(this.data.contestants &#x3D;&#x3D; null)) {
+      this.numberContestant &#x3D; this.data.contestants.length;
+    }
+
+    if(!(this.data.events &#x3D;&#x3D; null)) {
+      if(!(this.data.events.bloodbath &#x3D;&#x3D; null)) {
+        this.numberEvents[1] &#x3D; this.data.events.bloodbath.length;
+      }
+      if (!(this.data.events.day &#x3D;&#x3D; null)) {
+        this.numberEvents[2] &#x3D; this.data.events.day.length;
+      }
+
+      if (!(this.data.events.special &#x3D;&#x3D; null)) {
+        this.numberEvents[3] &#x3D; this.data.events.special.length;
+      }
+    }
+
+    //basic form
+    this.form &#x3D; this.formBuilder.group({
+      name: [this.data.name],
+      title: [this.data.title],
+      contestants: this.formBuilder.array([]),
+
+      events: this.formBuilder.group({
+        bloodbath: this.formBuilder.array([]),
+        day: this.formBuilder.array([]),
+        special: this.formBuilder.array([])
+      })
+
+    })
+
+    this.addContestant(this.contestants.length);
+    this.addContestants(this.numberContestant);
+
+    this.addEvent(this.bloodbath.length, 0);
+    this.addEvent(this.day.length, 1);
+    this.addEvent(this.special.length, 2);
+
+    this.addEvents(this.numberEvents[1], 0);
+    this.addEvents(this.numberEvents[2], 1);
+    this.addEvents(this.numberEvents[3], 2);
+
+  }
+
+  /**
+   * Changes the scenario whose data will be used to fill the form. Used on the Select input.
+   * @param {string} scenario_selected Internal name of the scenario selected
+   */
+  scenarioChange(scenario_selected: string): void {
+
+    sessionStorage.setItem(&#x27;scenario_selected&#x27;, scenario_selected);
+    window.location.reload();
+
+  }
+
+  /**
+   * Gets from the session the scenario selected for the form. Getter
+   * @returns {string} Internal name of the scenario selected
+   */
+  getScenarioSelected(): string {
+
+    if (!(sessionStorage.getItem(&#x27;scenario_selected&#x27;) &#x3D;&#x3D; null)) {
+      return String(sessionStorage.getItem(&#x27;scenario_selected&#x27;)).replace(/&quot;/g, &#x27;&#x27;);
+    } else {
+      return &quot;termina&quot;;
+    }
+
+  }
+
+  /**
+   * Checks to see if an scenario imported by the user exists
+   * @returns True if a scenario imported by the user exists, false otherwise
+   */
+  isCustomScenarioExist(): boolean {
+
+    return (!(this.custom &#x3D;&#x3D; null));
+
+  }
+
+  /**
+   * Toggles the &#x27;debug&#x27; variable. 
+   */
+  toggleDebug(): void {
+    this.debug &#x3D; !this.debug;
+  }
+
+  /**
+   * Used to see, as a string, the data behind the form. This data changes dynamically based on your input on the form.
+   * @returns Value of the form cast as a string.
+   */
+  test(): string {
+    return JSON.stringify(this.form.value);
+  }
+
+  /**
+   * Get the &#x27;contestants&#x27; Array from the form
+   * @returns Contestants Array
+   */
+  get contestants(): FormArray {   
+    return this.form.get(&#x27;contestants&#x27;) as FormArray;  
+  }
+
+  /**
+   * Gets the contestant&#x27;s personality (an Array) from the form, based on the index of the contestant on the form
+   * @param index Index of the contestant on the form&#x27;s array
+   * @returns Personality Array
+   */
+  getPersonalityByIndex(index: number): FormArray {
+    return this.contestants.at(index).get(&#x27;personality&#x27;) as FormArray;
+  }
+
+  /**
+   * Get the &#x27;events&#x27; Group from the form
+   * @returns Events Group
+   */
+  get events() {
+    return this.form.get(&#x27;events&#x27;) as FormGroup;
+  }
+
+  /**
+   * Get the &#x27;bloodbath&#x27; Array from the form
+   * @returns Bloodbath Array
+   */
+  get bloodbath() { 
+    return this.events.get(&#x27;bloodbath&#x27;) as FormArray;
+  }
+
+  /**
+   * Get the &#x27;day&#x27; Array from the form
+   * @returns Day Array
+   */
+  get day() {   
+    return this.events.get(&#x27;day&#x27;) as FormArray;
+  }
+
+  /**
+   * Get the &#x27;special&#x27; Array from the form
+   * @returns Special Array
+   */
+  get special() {   
+    return this.events.get(&#x27;special&#x27;) as FormArray;  
+  }
+
+   /**
+   * Gets the &#x27;special event&#x27; Array within the special array, based on the index of the special array on the form
+   * @param index Index of the special on the form&#x27;s array
+   * @returns Special Event Array
+   */
+  getSpecEventFromIndex(index: number) {
+    return this.special.at(index).get(&#x27;events&#x27;) as FormArray;
+  }
+
+  /**
+   * Returns the name of one of the types of events based on its key
+   * @param i Key of the type of event
+   * @returns Value of the type of event
+   */
+  eventKey(i: number): string {
+    switch(i) {
+      case 0: return &quot;bloodbath&quot;;
+      case 1: return &quot;day&quot;;
+      case 2: return &quot;special&quot;;
+      default: return &quot;?&quot;;
+    }
+  }
+
+  /**
+   * Add a contestant on the last index of the Contestant array on the form.
+   * If data inside the JSON file provided for the form exists for the contestant, this data will be set on the form&#x27;s input.
+   * Else, the inputs will have a default value.
+   * @param index Index of the contestant within the JSON file
+   */
+  addContestant(index: number): void {
+
+    let id: string &#x3D; &#x27;&#x27;;
+    let name: string &#x3D; &#x27;&#x27;;
+    let image: string &#x3D; &#x27;&#x27;;
+    let personality: Array&lt;string&gt; &#x3D; [&#x27;0&#x27;,&#x27;0&#x27;];
+    let pronouns: string &#x3D; &#x27;&#x27;;
+    let friend: number &#x3D; 0;
+    let enemy: number &#x3D; 0;
+    let tr_name: string &#x3D; &#x27;&#x27;;
+    let tr_image: string &#x3D; &#x27;&#x27;;
+    let tr_personality: Array&lt;string&gt; &#x3D; [&#x27;0&#x27;,&#x27;0&#x27;];
+
+    if (!(this.data.contestants &#x3D;&#x3D; null)) {
+      if (!(this.data.contestants[index] &#x3D;&#x3D; null)) {
+        id &#x3D; this.data.contestants[index].id ?? &#x27;&#x27;;
+        name &#x3D; this.data.contestants[index].name ?? &#x27;&#x27;;
+        image &#x3D; this.data.contestants[index].image ?? &#x27;&#x27;;
+        personality &#x3D; this.data.contestants[index].personality ?? [&#x27;0&#x27;,&#x27;0&#x27;];
+        pronouns &#x3D; this.data.contestants[index].pronouns ?? &#x27;&#x27;;
+        friend &#x3D; this.data.contestants[index].friend ?? 0;
+        enemy &#x3D; this.data.contestants[index].enemy ?? 0;
+
+        if (!(this.data.contestants[index].transform) &#x3D;&#x3D; null) {
+          tr_name &#x3D; this.data.contestants[index].transform.name ?? &#x27;&#x27;;
+          tr_image &#x3D; this.data.contestants[index].transform.image ?? &#x27;&#x27;;
+          tr_personality &#x3D; this.data.contestants[index].transform.personality ?? &#x27;&#x27;;
+        }
+      }
+    }
+    
+    const contestantForm &#x3D; this.formBuilder.group({
+      id: [id],
+      name: [name],
+      image: [image],
+      personality: this.formBuilder.array([
+        [personality[0]], [personality[1]]
+      ]),
+      pronouns: [pronouns],
+      friend: [friend],
+      enemy: [enemy],
+      transform: this.formBuilder.group({
+        name: [tr_name],
+        image: [tr_image],
+        personality: this.formBuilder.array([
+          [tr_personality[0]], [tr_personality[1]]
+        ])
+      })
+    })
+    
+    this.contestants.push(contestantForm);  
+  }
+
+  /**
+   * Adds or remove multiple contestants. 
+   * Checks for the total amount of contestants on the form&#x27;s array before setting the amount of contestants on the array to
+   * the number provided as parameter.
+   * @param nb Number of contestants to be present on the contestants Array
+   */
+  addContestants(nb: number): void {
+
+    let len &#x3D; this.contestants.length;
+
+    if (nb &lt; len ) {
+      while (nb &lt; len) {
+        this.removeContestant()
+        nb++;
+      }
+    } else {
+        while(nb &gt; len) {
+          this.addContestant(this.contestants.length);
+          nb--;
+        }
+    } 
+
+  }
+
+  /**
+   * Removes a contestant from the form&#x27;s array at the last index.
+   */
+  removeContestant() {    
+    this.contestants.removeAt(this.contestants.length - 1);
+  }
+
+  /**
+   * Removes a contestant from the form&#x27;s array at the index specified.
+   * @param index Index on the array relating to the contestant who should be removed.
+   */
+  removeContestantByIndex(index: number) {    
+    this.contestants.removeAt(index);
+    this.numberContestant -&#x3D; 1;
+  }
+
+  /**
+   * Add an event (bloodbath, day or special) on the last index of their respective array on the form.
+   * If data inside the JSON file provided for the form exists for the events, this data will be set on the form&#x27;s input.
+   * Else, the inputs will have a default value.
+   * @param index Index of the event within the JSON file
+   * @param type Type of event (0: Bloodbath ; 1: Day ; 2: Special)
+   */
+  addEvent(index: number, type: number): void {
+
+    let eventKey &#x3D; this.eventKey(type);
+
+    let special_name: string &#x3D; &#x27;&#x27;;
+    let events: Array&lt;string&gt; &#x3D; [&#x27;&#x27;];
+
+    let id: string &#x3D; &#x27;&#x27;;
+    let description: string &#x3D; &#x27;&#x27;;
+    let killer: string &#x3D; &#x27;&#x27;;
+    let killed: string &#x3D; &#x27;&#x27;;
+    let nb_actors: string &#x3D; &#x27;&#x27;;
+
+    if (!(this.data.events &#x3D;&#x3D; null)) {
+
+      if ((eventKey &#x3D;&#x3D; &quot;special&quot;) &amp;&amp; (!(this.data.events.special[index] &#x3D;&#x3D; null))) {
+        special_name &#x3D; this.data.events.special[index].special_name ?? &#x27;&#x27;;
+
+        if (!(this.data.events.special[index].events &#x3D;&#x3D; null)) {
+          id &#x3D; this.data.events.special[index].events[0] ?? &#x27;&#x27;;
+          description &#x3D; this.data.events.special[index].events[1] ?? &#x27;&#x27;;
+          killer &#x3D; this.data.events.special[index].events[2] ?? &#x27;&#x27;;
+          killed &#x3D; this.data.events.special[index].events[3] ?? &#x27;&#x27;;
+          nb_actors &#x3D; this.data.events.special[index].events[4] ?? &#x27;&#x27;;
+        }
+    
+      } else if ((eventKey &#x3D;&#x3D; &quot;day&quot;) &amp;&amp; (!(this.data.events.day[index] &#x3D;&#x3D; null))) {
+        events &#x3D; this.data.events.day[index];
+
+        if (!(this.data.events.day[index] &#x3D;&#x3D; null)) {
+          id &#x3D; this.data.events.day[index][0] ?? &#x27;&#x27;;
+          description &#x3D; this.data.events.day[index][1] ?? &#x27;&#x27;;
+          killer &#x3D; this.data.events.day[index][2] ?? &#x27;&#x27;;
+          killed &#x3D; this.data.events.day[index][3] ?? &#x27;&#x27;;
+          nb_actors &#x3D; this.data.events.day[index][4] ?? &#x27;&#x27;;
+        }
+
+      } else if ((eventKey &#x3D;&#x3D; &quot;bloodbath&quot;) &amp;&amp; (!(this.data.events.bloodbath[index ]&#x3D;&#x3D; null))) {
+        events &#x3D; this.data.events.bloodbath[index];
+
+        if (!(this.data.events.bloodbath[index] &#x3D;&#x3D; null)) {
+          id &#x3D; this.data.events.bloodbath[index][0] ?? &#x27;&#x27;;
+          description &#x3D; this.data.events.bloodbath[index][1] ?? &#x27;&#x27;;
+          killer &#x3D; this.data.events.bloodbath[index][2] ?? &#x27;&#x27;;
+          killed &#x3D; this.data.events.bloodbath[index][3] ?? &#x27;&#x27;;
+          nb_actors &#x3D; this.data.events.bloodbath[index][4] ?? &#x27;&#x27;;
+        }
+      }
+    }
+
+    if (eventKey &#x3D;&#x3D; &quot;special&quot;) {
+      
+      const specialForm &#x3D; this.formBuilder.group({
+          special_name: [special_name],
+          events: this.formBuilder.array([])
+      })
+
+      this.special.push(specialForm);
+
+      if (this.numberSpecials[index] &#x3D;&#x3D; null) {
+        this.numberSpecials[index] &#x3D; 0;
+      }
+
+      if (!(this.data.events &#x3D;&#x3D; null)) {
+        if (this.data.events.special[index] &#x3D;&#x3D; undefined) {
+          this.addSpecialEvent(index, this.getSpecEventFromIndex(index).length);
+        } else {
+          for(let i: number &#x3D; 0; i &lt; this.data.events.special[index].events.length; i++) {
+            this.addSpecialEvent(index, this.getSpecEventFromIndex(index).length);
+          }
+        }
+      }
+
+      this.numberSpecials[index] &#x3D; this.getSpecEventFromIndex(index).length;
+
+    } else if (eventKey &#x3D;&#x3D; &quot;day&quot;) {
+
+      const dayForm &#x3D; this.formBuilder.array([
+        [id], [description], [killer], [killed], [nb_actors]
+      ]);
+
+      this.day.push(dayForm);
+
+    } else if (eventKey &#x3D;&#x3D; &quot;bloodbath&quot;) {
+
+      const bloodbathForm &#x3D; this.formBuilder.array([
+        [id], [description], [killer], [killed], [nb_actors]
+      ]);
+
+      this.bloodbath.push(bloodbathForm);
+
+    }
+
+  }
+
+   /**
+   * Adds or remove multiple events based on their type. 
+   * Checks for the total amount of events of a certain type on the form&#x27;s array before setting the amount of events on the array to
+   * the number provided as parameter.
+   * @param nb Number of events of a certain type to be present on their respective Array
+   * @param type Type of event (0: Bloodbath ; 1: Day ; 2: Special)
+   */
+  addEvents(nb: number, type: number) {
+
+    let eventKey &#x3D; this.eventKey(type);
+
+    let len &#x3D; 0;
+
+    if (eventKey &#x3D;&#x3D; &quot;special&quot;) {
+      len &#x3D; this.special.length;
+    } else if (eventKey &#x3D;&#x3D; &quot;day&quot;) {
+      len &#x3D; this.day.length;
+    } else if (eventKey &#x3D;&#x3D; &quot;bloodbath&quot;) {
+      len &#x3D; this.bloodbath.length;
+    }
+  
+    if (nb &lt; len ) {
+      while (nb &lt; len) {
+        this.removeEvent(type)
+        nb++;
+      }
+    } else {
+        while(nb &gt; len) {
+
+          if (eventKey &#x3D;&#x3D; &quot;special&quot;) {
+            this.addEvent(this.special.length, type);
+          } else if (eventKey &#x3D;&#x3D; &quot;day&quot;) {
+            this.addEvent(this.day.length, type);
+          } else if (eventKey &#x3D;&#x3D; &quot;bloodbath&quot;) {
+            this.addEvent(this.bloodbath.length, type);
+          }
+          nb--;
+        }
+    } 
+
+  }
+
+  /**
+   * Removes a event based on its type from the form&#x27;s array at the last index.
+   * @param type Type of event (0: Bloodbath ; 1: Day ; 2: Special)
+   */
+  removeEvent(type: number): void {
+
+    let eventKey &#x3D; this.eventKey(type);
+
+    if (eventKey &#x3D;&#x3D; &quot;special&quot;) {
+      this.special.removeAt(this.special.length - 1);
+    } else if (eventKey &#x3D;&#x3D; &quot;day&quot;) {
+      this.day.removeAt(this.day.length - 1);
+    } else if (eventKey &#x3D;&#x3D; &quot;bloodbath&quot;) {
+      this.bloodbath.removeAt(this.bloodbath.length - 1);
+    }
+
+  }
+  
+  /**
+   * Removes a event based on its type from the form&#x27;s array at the index provided in parameters.
+   * @param type Type of event (0: Bloodbath ; 1: Day ; 2: Special)
+   * @param index Index on the array relating to the event of a certain type which should be removed.
+   */
+  removeEventByIndex(type: number, index: number): void {
+    
+    let eventKey &#x3D; this.eventKey(type);
+
+    if (eventKey &#x3D;&#x3D; &quot;special&quot;) {
+      this.special.removeAt(index);
+    } else if (eventKey &#x3D;&#x3D; &quot;day&quot;) {
+      this.day.removeAt(index);
+    } else if (eventKey &#x3D;&#x3D; &quot;bloodbath&quot;) {
+      this.bloodbath.removeAt(index);
+    }
+
+    this.numberEvents[type + 1] -&#x3D; 1;
+
+  }
+
+  /**
+   * Add an sub-event inside the &#x27;special&#x27; array on the last index available for the sub-event in question.
+   * If data inside the JSON file provided for the form exists for the sub-events, this data will be set on the form&#x27;s input.
+   * Else, the inputs will have a default value.
+   * @param eventIndex Index of the special event this sub-event is the child of
+   * @param index Index of the sub-event
+   */
+  addSpecialEvent(eventIndex: number, index: number): void {
+
+    let id: string &#x3D; &#x27;&#x27;;
+    let description: string &#x3D; &#x27;&#x27;;
+    let killer: string &#x3D; &#x27;&#x27;;
+    let killed: string &#x3D; &#x27;&#x27;;
+    let nb_actors: string &#x3D; &#x27;&#x27;;
+
+    if (!(this.data.events &#x3D;&#x3D; null)) {
+      if (!(this.data.events.special &#x3D;&#x3D; null)) {
+        if (!(this.data.events.special[eventIndex] &#x3D;&#x3D; undefined)) {
+          if (!(this.data.events.special[eventIndex].events[index] &#x3D;&#x3D; undefined)) {
+            id &#x3D; this.data.events.special[eventIndex].events[index][0] ?? &#x27;&#x27;;
+            description &#x3D; this.data.events.special[eventIndex].events[index][1] ?? &#x27;&#x27;;
+            killer &#x3D; this.data.events.special[eventIndex].events[index][2] ?? &#x27;&#x27;;
+            killed &#x3D; this.data.events.special[eventIndex].events[index][3] ?? &#x27;&#x27;;
+            nb_actors &#x3D; this.data.events.special[eventIndex].events[index][4] ?? &#x27;&#x27;;
+          }
+        }
+      }
+    }
+      
+    const specialEventForm &#x3D; this.formBuilder.array([
+      [id], [description], [killer], [killed], [nb_actors]
+    ]);
+
+    this.getSpecEventFromIndex(eventIndex).push(specialEventForm);
+
+  }
+
+  /**
+   * Adds or remove multiple sub-events based on their index in the special array 
+   * Checks for the total amount of sub-events on the form&#x27;s array before setting the amount of events on the array to
+   * the number provided as parameter.
+   * @param eventIndex Index of the special event this sub-event is the child of
+   * @param nb Number of sub-events to be present on the special event&#x27;s Array
+   */
+  addSpecialEvents(eventIndex: number, nb: number): void {
+
+    let len &#x3D; this.getSpecEventFromIndex(eventIndex).length;
+
+    if (nb &lt; len ) {
+      while (nb &lt; len) {
+        this.removeSpecialEvent(eventIndex);
+        nb++;
+      }
+    } else {
+        while(nb &gt; len) {
+          this.addSpecialEvent(eventIndex, this.getSpecEventFromIndex(eventIndex).length);
+          nb--;
+        }
+    } 
+
+  }
+
+  /**
+   * Removes a sub-event based on its index in the specia array from the form&#x27;s array at the last index.
+   * @param eventIndex Index of the special event this sub-event is the child of.
+   */
+  removeSpecialEvent(eventIndex: number): void {
+
+    this.getSpecEventFromIndex(eventIndex).removeAt(this.getSpecEventFromIndex(eventIndex).length - 1);
+
+  }
+
+  /**
+   * Removes a sub-event based on its index in the specia array from the form&#x27;s array at the index specified.
+   * @param eventIndex Index of the special event this sub-event is the child of.
+   * @param index Index of the sub-event within the special event
+   */
+  removeSpecialEventByIndex(eventIndex: number, index: number) {
+
+    this.getSpecEventFromIndex(eventIndex).removeAt(index);
+
+    this.numberSpecials[eventIndex] -&#x3D; 1;
+
+  }
+
+  /**
+   * If the form is valid, sets the form inside the session as &#x27;scenario&#x27;.
+   * If debuf is activated, will show debug information in the console.
+   * Else, will redirect the user to the homepage.
+   */
+  onSubmit(): void {
+    if (this.form.valid || 1) {
+      sessionStorage.setItem(&#x27;scenario&#x27;, JSON.stringify(this.form.value));
+      if(this.debug) {
+        console.warn(sessionStorage.getItem(&#x27;scenario&#x27;));
+        console.warn(JSON.parse(String(sessionStorage.getItem(&#x27;scenario&#x27;))));
+        console.warn(this.form.value);
+      } else {
+        this.router.navigateByUrl(&#x27;/home&#x27;);
+      }
+    }
+  }
+
+  /**
+   * Download the form as a JSON file.
+   */
+  saveScenario(): void {
+    
+    const json &#x3D; this.form.value;
+    const blob &#x3D; new Blob([JSON.stringify(this.form.value)], { type: &#x27;application/json&#x27; });
+    const url &#x3D; window.URL.createObjectURL(blob);
+    const link &#x3D; document.createElement(&#x27;a&#x27;);
+    link.href &#x3D; url;
+    link.download &#x3D; this.data.name;
+    link.click();
+    window.URL.revokeObjectURL(url);
+    
+  }
+  
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;form [formGroup]&#x3D;&quot;form&quot; (ngSubmit)&#x3D;&quot;onSubmit()&quot;&gt;
+
+    &lt;h1&gt; Scenario form ! &lt;/h1&gt;
+
+    &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+        &lt;mat-label&gt; Scenario to edit &lt;/mat-label&gt;
+        &lt;mat-select [(value)]&#x3D;&quot;scenario_chosen&quot; (selectionChange)&#x3D;&quot;scenarioChange(scenario_chosen)&quot;&gt;
+          &lt;mat-option value&#x3D;&quot;termina&quot;&gt; Fear &amp; Hunger 2 : Termina &lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;copa&quot;&gt; Corpse Party &lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;new&quot;&gt; New scenario &lt;/mat-option&gt;
+        &lt;/mat-select&gt;
+    &lt;/mat-form-field&gt;
+
+    &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+
+        &lt;mat-label&gt; Internal Name : &lt;/mat-label&gt;  
+        &lt;input matInput type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;name&quot;/&gt;
+
+    &lt;/mat-form-field&gt;
+
+    &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+
+        &lt;mat-label&gt; Title: &lt;/mat-label&gt; 
+        &lt;input matInput type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;title&quot;/&gt;
+
+    &lt;/mat-form-field&gt;
+
+    &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+        &lt;mat-label&gt; Display section : &lt;/mat-label&gt;
+        &lt;mat-select [(value)]&#x3D;&quot;visible&quot;&gt;
+          &lt;mat-option value&#x3D;&quot;contestant&quot;&gt; Contestants &lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;events&quot;&gt; Day &amp; Bloodbath events &lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;special&quot;&gt; Special events &lt;/mat-option&gt;
+        &lt;/mat-select&gt;
+    &lt;/mat-form-field&gt;
+
+    &lt;mat-checkbox [checked]&#x3D;&quot;debug&quot; (change)&#x3D;&quot;toggleDebug()&quot;&gt; 
+        Debug
+    &lt;/mat-checkbox&gt;
+
+    &lt;h2 [hidden]&#x3D;&quot;visible !&#x3D; &#x27;contestant&#x27;&quot;&gt; Contestants : &lt;/h2&gt; 
+
+    &lt;div formArrayName&#x3D;&quot;contestants&quot; [hidden]&#x3D;&quot;visible !&#x3D; &#x27;contestant&#x27;&quot;&gt;    
+
+        &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+            &lt;mat-label&gt; Number of contestants : &lt;/mat-label&gt;    
+            &lt;input matInput type&#x3D;&quot;number&quot; step&#x3D;&quot;1&quot; [(ngModel)]&#x3D;&quot;numberContestant&quot; min&#x3D;&quot;0&quot; 
+        [ngModelOptions]&#x3D;&quot;{standalone: true}&quot; (change)&#x3D;&quot;addContestants(numberContestant)&quot;/&gt;
+        &lt;/mat-form-field&gt;
+
+        &lt;div *ngFor &#x3D;&quot;let contestant of contestants.controls; let i&#x3D;index&quot;&gt;
+
+            &lt;div [formGroupName]&#x3D;&quot;i&quot; class&#x3D;&quot;section-row&quot;&gt;
+
+                &lt;img [src]&#x3D;&quot;this.contestants.value[i].image&quot;/&gt;
+
+                &lt;div&gt;
+
+                    &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+                    
+                        &lt;mat-label&gt; ID : &lt;/mat-label&gt;         
+                        &lt;input matInput type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;id&quot;/&gt;
+
+                    &lt;/mat-form-field&gt;
+
+                    &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+
+                        &lt;mat-label&gt; Name : &lt;/mat-label&gt;          
+                        &lt;input matInput type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;name&quot;/&gt;
+
+                    &lt;/mat-form-field&gt;
+
+                &lt;/div&gt;
+
+                &lt;div&gt;
+
+                    &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+
+                        &lt;mat-label&gt; Pronouns : &lt;/mat-label&gt;  
+                        &lt;mat-select formControlName&#x3D;&quot;pronouns&quot;&gt;
+                            &lt;mat-option value&#x3D;&quot;he&quot;&gt; He/Him &lt;/mat-option&gt;
+                            &lt;mat-option value&#x3D;&quot;she&quot;&gt; She/Her &lt;/mat-option&gt;
+                            &lt;mat-option value&#x3D;&quot;they&quot;&gt; They/Them &lt;/mat-option&gt;
+                            &lt;mat-option value&#x3D;&quot;it&quot;&gt; It/Its &lt;/mat-option&gt;
+                        &lt;/mat-select&gt;
+
+                    &lt;/mat-form-field&gt;
+                    
+                    &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+
+                        &lt;mat-label&gt; Image : &lt;/mat-label&gt;         
+                        &lt;input matInput type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;image&quot; /&gt;
+
+                    &lt;/mat-form-field&gt;
+
+                &lt;/div&gt;
+
+                &lt;div formArrayName&#x3D;&quot;personality&quot;&gt;
+
+                    &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+
+                        &lt;mat-label&gt; Personality 1 : &lt;/mat-label&gt;  
+                        &lt;mat-select formControlName&#x3D;&quot;0&quot;&gt;
+                            &lt;mat-option value&#x3D;&quot;0&quot;&gt; None &lt;/mat-option&gt;
+                            &lt;mat-option value&#x3D;&quot;1&quot;&gt; Kind &lt;/mat-option&gt;
+                            &lt;mat-option value&#x3D;&quot;2&quot;&gt; Peaceful &lt;/mat-option&gt;
+                            &lt;mat-option value&#x3D;&quot;3&quot;&gt; Leader &lt;/mat-option&gt;
+                            &lt;mat-option value&#x3D;&quot;4&quot;&gt; Psychopath &lt;/mat-option&gt;
+                        &lt;/mat-select&gt;
+
+                    &lt;/mat-form-field&gt;
+
+                    &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+
+                        &lt;mat-label&gt; Personality 2 : &lt;/mat-label&gt;  
+                        &lt;mat-select formControlName&#x3D;&quot;1&quot;&gt;
+                            &lt;mat-option value&#x3D;&quot;0&quot;&gt; None &lt;/mat-option&gt;
+                            &lt;mat-option value&#x3D;&quot;1&quot;&gt; Kind &lt;/mat-option&gt;
+                            &lt;mat-option value&#x3D;&quot;2&quot;&gt; Peaceful &lt;/mat-option&gt;
+                            &lt;mat-option value&#x3D;&quot;3&quot;&gt; Leader &lt;/mat-option&gt;
+                            &lt;mat-option value&#x3D;&quot;4&quot;&gt; Psychopath &lt;/mat-option&gt;
+                        &lt;/mat-select&gt;
+
+                    &lt;/mat-form-field&gt;
+
+                &lt;/div&gt;
+
+                &lt;div&gt;
+
+                    &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+
+                        &lt;mat-label&gt; Friend : &lt;/mat-label&gt;         
+                        &lt;input matInput type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;friend&quot; /&gt;
+
+                    &lt;/mat-form-field&gt;
+
+                    &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+
+                        &lt;mat-label&gt; Enemy : &lt;/mat-label&gt;         
+                        &lt;input matInput type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;enemy&quot; /&gt;
+
+                    &lt;/mat-form-field&gt;
+
+                &lt;/div&gt;
+
+                &lt;div formGroupName&#x3D;&quot;transform&quot;&gt;
+
+                    &lt;div&gt;
+
+                        &lt;h4&gt; Transformation : &lt;/h4&gt;
+
+                        &lt;div class&#x3D;&quot;trans-row&quot;&gt;
+
+                            &lt;div&gt;
+
+                                &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+
+                                    &lt;mat-label&gt; Name : &lt;/mat-label&gt;          
+                                    &lt;input matInput type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;name&quot;/&gt;
+
+                                &lt;/mat-form-field&gt;
+
+                                &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+
+                                    &lt;mat-label&gt; Image : &lt;/mat-label&gt;         
+                                    &lt;input matInput type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;image&quot; /&gt;
+
+                                &lt;/mat-form-field&gt;
+
+                            &lt;/div&gt;
+
+                            &lt;div formArrayName&#x3D;&quot;personality&quot;&gt;
+
+                                &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+
+                                    &lt;mat-label&gt; Personality 1 : &lt;/mat-label&gt;  
+                                    &lt;mat-select formControlName&#x3D;&quot;0&quot;&gt;
+                                        &lt;mat-option value&#x3D;&quot;0&quot;&gt; None &lt;/mat-option&gt;
+                                        &lt;mat-option value&#x3D;&quot;1&quot;&gt; Kind &lt;/mat-option&gt;
+                                        &lt;mat-option value&#x3D;&quot;2&quot;&gt; Peaceful &lt;/mat-option&gt;
+                                        &lt;mat-option value&#x3D;&quot;3&quot;&gt; Leader &lt;/mat-option&gt;
+                                        &lt;mat-option value&#x3D;&quot;4&quot;&gt; Psychopath &lt;/mat-option&gt;
+                                    &lt;/mat-select&gt;
+
+                                &lt;/mat-form-field&gt;
+
+                                &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+
+                                    &lt;mat-label&gt; Personality 2 : &lt;/mat-label&gt;  
+                                        &lt;mat-select formControlName&#x3D;&quot;1&quot;&gt;
+                                            &lt;mat-option value&#x3D;&quot;0&quot;&gt; None &lt;/mat-option&gt;
+                                            &lt;mat-option value&#x3D;&quot;1&quot;&gt; Kind &lt;/mat-option&gt;
+                                            &lt;mat-option value&#x3D;&quot;2&quot;&gt; Peaceful &lt;/mat-option&gt;
+                                            &lt;mat-option value&#x3D;&quot;3&quot;&gt; Leader &lt;/mat-option&gt;
+                                            &lt;mat-option value&#x3D;&quot;4&quot;&gt; Psychopath &lt;/mat-option&gt;
+                                        &lt;/mat-select&gt;
+
+                                &lt;/mat-form-field&gt;
+
+                            &lt;/div&gt;
+
+                        &lt;/div&gt;
+
+                    &lt;/div&gt;
+
+                &lt;/div&gt;
+   
+                &lt;button mat-stroked-button type&#x3D;&quot;button&quot; (click)&#x3D;&quot;removeContestantByIndex(i)&quot;&gt; Remove contestant &lt;/button&gt; 
+
+            &lt;/div&gt;  
+
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+
+    &lt;div formGroupName&#x3D;&quot;events&quot;&gt;
+
+        &lt;div formArrayName&#x3D;&quot;bloodbath&quot; [hidden]&#x3D;&quot;visible !&#x3D; &#x27;events&#x27;&quot;&gt;
+
+            &lt;h4&gt; Bloodbaths ! &lt;/h4&gt;
+
+            &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+                &lt;mat-label&gt; Number of bloodbaths : &lt;/mat-label&gt;    
+                &lt;input matInput type&#x3D;&quot;number&quot; step&#x3D;&quot;1&quot; [(ngModel)]&#x3D;&quot;numberEvents[1]&quot; min&#x3D;&quot;0&quot; 
+                [ngModelOptions]&#x3D;&quot;{standalone: true}&quot; (change)&#x3D;&quot;addEvents(numberEvents[1], 0)&quot;/&gt;
+            &lt;/mat-form-field&gt;
+
+            &lt;div *ngFor &#x3D;&quot;let bloods of bloodbath.controls; let j&#x3D;index;&quot; [formArrayName] &#x3D; &quot;j&quot; class&#x3D;&quot;section-row-events&quot;&gt;
+
+                &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+                
+                    &lt;mat-label&gt; ID : &lt;/mat-label&gt;   
+                    &lt;input matInput type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;0&quot; /&gt;      
+                        
+
+                &lt;/mat-form-field&gt;
+
+                &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+                
+                    &lt;mat-label&gt; Description : &lt;/mat-label&gt;   
+                    &lt;input matInput type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;1&quot; /&gt;      
+                        
+
+                &lt;/mat-form-field&gt;
+
+                &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+                
+                    &lt;mat-label&gt; Killer &lt;/mat-label&gt;   
+                    &lt;input matInput type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;2&quot; /&gt;      
+                        
+
+                &lt;/mat-form-field&gt;
+
+                &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+                
+                    &lt;mat-label&gt; Killed : &lt;/mat-label&gt;   
+                    &lt;input matInput type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;3&quot; /&gt;      
+                        
+
+                &lt;/mat-form-field&gt;
+
+                &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+                
+                    &lt;mat-label&gt;  Nb_actors &lt;/mat-label&gt;   
+                    &lt;input matInput type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;4&quot; /&gt;      
+                        
+
+                &lt;/mat-form-field&gt;
+
+                &lt;button mat-stroked-button type&#x3D;&quot;button&quot; (click)&#x3D;&quot;removeEventByIndex(0,j)&quot;&gt; Remove bloodbath &lt;/button&gt; 
+
+            &lt;/div&gt;
+
+        &lt;/div&gt;
+
+        &lt;div formArrayName&#x3D;&quot;day&quot; [hidden]&#x3D;&quot;visible !&#x3D; &#x27;events&#x27;&quot;&gt;
+
+            &lt;h4&gt; Days ! &lt;/h4&gt;
+
+            &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+                &lt;mat-label&gt; Number of days : &lt;/mat-label&gt;    
+                &lt;input matInput type&#x3D;&quot;number&quot; step&#x3D;&quot;1&quot; [(ngModel)]&#x3D;&quot;numberEvents[2]&quot; min&#x3D;&quot;0&quot; 
+                [ngModelOptions]&#x3D;&quot;{standalone: true}&quot; (change)&#x3D;&quot;addEvents(numberEvents[2], 1)&quot;/&gt;
+            &lt;/mat-form-field&gt;
+
+            &lt;div *ngFor &#x3D;&quot;let days of day.controls; let k&#x3D;index;&quot; [formArrayName] &#x3D; &quot;k&quot; class&#x3D;&quot;section-row-events&quot;&gt;
+
+                &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+                
+                    &lt;mat-label&gt; ID : &lt;/mat-label&gt;   
+                    &lt;input matInput type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;0&quot; /&gt;      
+                        
+
+                &lt;/mat-form-field&gt;
+
+                &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+                
+                    &lt;mat-label&gt; Description : &lt;/mat-label&gt;   
+                    &lt;input matInput type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;1&quot; /&gt;      
+                        
+
+                &lt;/mat-form-field&gt;
+
+                &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+                
+                    &lt;mat-label&gt; Killer &lt;/mat-label&gt;   
+                    &lt;input matInput type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;2&quot; /&gt;      
+                        
+
+                &lt;/mat-form-field&gt;
+
+                &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+              
+                    &lt;mat-label&gt; Killed : &lt;/mat-label&gt;   
+                    &lt;input matInput type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;3&quot; /&gt;      
+                        
+
+                &lt;/mat-form-field&gt;
+
+                &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+                
+                    &lt;mat-label&gt;  Nb_actors &lt;/mat-label&gt;   
+                    &lt;input matInput type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;4&quot; /&gt;      
+                        
+
+                &lt;/mat-form-field&gt;
+
+                &lt;button mat-stroked-button type&#x3D;&quot;button&quot; (click)&#x3D;&quot;removeEventByIndex(1,k)&quot;&gt; Remove day &lt;/button&gt; 
+
+            &lt;/div&gt;
+
+        &lt;/div&gt;
+
+        &lt;div formArrayName&#x3D;&quot;special&quot; [hidden]&#x3D;&quot;visible !&#x3D; &#x27;special&#x27;&quot;&gt;
+
+            &lt;h4&gt; Special ! &lt;/h4&gt;
+
+            &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+                &lt;mat-label&gt; Number of specials : &lt;/mat-label&gt;    
+                &lt;input matInput type&#x3D;&quot;number&quot; step&#x3D;&quot;1&quot; [(ngModel)]&#x3D;&quot;numberEvents[3]&quot; min&#x3D;&quot;0&quot; 
+                [ngModelOptions]&#x3D;&quot;{standalone: true}&quot; (change)&#x3D;&quot;addEvents(numberEvents[3], 2)&quot;/&gt;
+            &lt;/mat-form-field&gt;
+
+            &lt;div *ngFor &#x3D; &quot;let specials of special.controls; let l&#x3D;index;&quot; [formGroupName] &#x3D; &quot;l&quot; class&#x3D;&quot;section-row-events special&quot;&gt;
+
+                &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+                
+                    &lt;mat-label&gt; Special event name : &lt;/mat-label&gt;   
+                    &lt;input matInput type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;special_name&quot; /&gt;
+
+                &lt;/mat-form-field&gt;
+
+                &lt;div formArrayName &#x3D; &quot;events&quot;&gt;
+
+                    &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+                        &lt;mat-label&gt; Add special events {{ l }} &lt;/mat-label&gt;    
+                        &lt;input matInput type&#x3D;&quot;number&quot; step&#x3D;&quot;1&quot; [(ngModel)]&#x3D;&quot;numberSpecials[l]&quot; min&#x3D;&quot;0&quot; 
+                        [ngModelOptions]&#x3D;&quot;{standalone: true}&quot; (change)&#x3D;&quot;addSpecialEvents(l, numberSpecials[l])&quot;/&gt;
+                    &lt;/mat-form-field&gt;
+
+
+                    &lt;div *ngFor &#x3D;&quot;let spec_events of getSpecEventFromIndex(l).controls; let m&#x3D;index;&quot;
+                        [formArrayName] &#x3D; &quot;m&quot; class&#x3D;&quot;section-row-events&quot;&gt;
+
+                        &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+                    
+                            &lt;mat-label&gt; ID : &lt;/mat-label&gt;   
+                            &lt;input matInput type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;0&quot; /&gt;      
+                                    
+                        &lt;/mat-form-field&gt;
+
+                        &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+                            
+                            &lt;mat-label&gt; Description : &lt;/mat-label&gt;   
+                            &lt;input matInput type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;1&quot; /&gt;       
+
+                        &lt;/mat-form-field&gt;
+
+                        &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+                            
+                            &lt;mat-label&gt; Killer &lt;/mat-label&gt;   
+                            &lt;input matInput type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;2&quot; /&gt;      
+                                    
+                        &lt;/mat-form-field&gt;
+
+                            &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+                            
+                            &lt;mat-label&gt; Killed : &lt;/mat-label&gt;   
+                            &lt;input matInput type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;3&quot; /&gt;
+
+                        &lt;/mat-form-field&gt;
+
+                        &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+                            
+                            &lt;mat-label&gt;  Nb_actors &lt;/mat-label&gt;   
+                            &lt;input matInput type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;4&quot; /&gt;             
+
+                        &lt;/mat-form-field&gt;
+
+                        &lt;button mat-stroked-button type&#x3D;&quot;button&quot; (click)&#x3D;&quot;removeSpecialEventByIndex(l,m)&quot;&gt; Remove bloodbath &lt;/button&gt; 
+
+                    &lt;/div&gt;
+
+                &lt;/div&gt;
+
+                &lt;button mat-stroked-button type&#x3D;&quot;button&quot; (click)&#x3D;&quot;removeEventByIndex(2,l)&quot;&gt; Remove special &lt;/button&gt; 
+
+            &lt;/div&gt;
+
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+
+    &lt;button mat-stroked-button type&#x3D;&quot;button&quot; (click)&#x3D;&quot;saveScenario()&quot;&gt; Export scenario &lt;/button&gt;
+
+    &lt;p&gt;Complete the form to enable button.&lt;/p&gt;  
+    &lt;button mat-stroked-button type&#x3D;&quot;submit&quot; [disabled]&#x3D;&quot;!form.valid&quot;&gt;Submit&lt;/button&gt;
+
+    &lt;p [hidden]&#x3D;&quot;!debug&quot;&gt; {{ test() }} &lt;/p&gt;
+
+
+&lt;/form&gt;</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><form [formGroup]="form" (ngSubmit)="onSubmit()">    <h1> Scenario form ! </h1>    <mat-form-field appearance="outline">        <mat-label> Scenario to edit </mat-label>        <mat-select [(value)]="scenario_chosen" (selectionChange)="scenarioChange(scenario_chosen)">          <mat-option value="termina"> Fear & Hunger 2 : Termina </mat-option>          <mat-option value="copa"> Corpse Party </mat-option>          <mat-option value="new"> New scenario </mat-option>        </mat-select>    </mat-form-field>    <mat-form-field appearance="outline">        <mat-label> Internal Name : </mat-label>          <input matInput type="text" formControlName="name"/>    </mat-form-field>    <mat-form-field appearance="outline">        <mat-label> Title: </mat-label>         <input matInput type="text" formControlName="title"/>    </mat-form-field>    <mat-form-field appearance="outline">        <mat-label> Display section : </mat-label>        <mat-select [(value)]="visible">          <mat-option value="contestant"> Contestants </mat-option>          <mat-option value="events"> Day & Bloodbath events </mat-option>          <mat-option value="special"> Special events </mat-option>        </mat-select>    </mat-form-field>    <mat-checkbox [checked]="debug" (change)="toggleDebug()">         Debug    </mat-checkbox>    <h2 [hidden]="visible != \'contestant\'"> Contestants : </h2>     <div formArrayName="contestants" [hidden]="visible != \'contestant\'">            <mat-form-field appearance="outline">            <mat-label> Number of contestants : </mat-label>                <input matInput type="number" step="1" [(ngModel)]="numberContestant" min="0"         [ngModelOptions]="{standalone: true}" (change)="addContestants(numberContestant)"/>        </mat-form-field>        <div *ngFor ="let contestant of contestants.controls; let i=index">            <div [formGroupName]="i" class="section-row">                <img [src]="this.contestants.value[i].image"/>                <div>                    <mat-form-field appearance="outline">                                            <mat-label> ID : </mat-label>                                 <input matInput type="text" formControlName="id"/>                    </mat-form-field>                    <mat-form-field appearance="outline">                        <mat-label> Name : </mat-label>                                  <input matInput type="text" formControlName="name"/>                    </mat-form-field>                </div>                <div>                    <mat-form-field appearance="outline">                        <mat-label> Pronouns : </mat-label>                          <mat-select formControlName="pronouns">                            <mat-option value="he"> He/Him </mat-option>                            <mat-option value="she"> She/Her </mat-option>                            <mat-option value="they"> They/Them </mat-option>                            <mat-option value="it"> It/Its </mat-option>                        </mat-select>                    </mat-form-field>                                        <mat-form-field appearance="outline">                        <mat-label> Image : </mat-label>                                 <input matInput type="text" formControlName="image" />                    </mat-form-field>                </div>                <div formArrayName="personality">                    <mat-form-field appearance="outline">                        <mat-label> Personality 1 : </mat-label>                          <mat-select formControlName="0">                            <mat-option value="0"> None </mat-option>                            <mat-option value="1"> Kind </mat-option>                            <mat-option value="2"> Peaceful </mat-option>                            <mat-option value="3"> Leader </mat-option>                            <mat-option value="4"> Psychopath </mat-option>                        </mat-select>                    </mat-form-field>                    <mat-form-field appearance="outline">                        <mat-label> Personality 2 : </mat-label>                          <mat-select formControlName="1">                            <mat-option value="0"> None </mat-option>                            <mat-option value="1"> Kind </mat-option>                            <mat-option value="2"> Peaceful </mat-option>                            <mat-option value="3"> Leader </mat-option>                            <mat-option value="4"> Psychopath </mat-option>                        </mat-select>                    </mat-form-field>                </div>                <div>                    <mat-form-field appearance="outline">                        <mat-label> Friend : </mat-label>                                 <input matInput type="text" formControlName="friend" />                    </mat-form-field>                    <mat-form-field appearance="outline">                        <mat-label> Enemy : </mat-label>                                 <input matInput type="text" formControlName="enemy" />                    </mat-form-field>                </div>                <div formGroupName="transform">                    <div>                        <h4> Transformation : </h4>                        <div class="trans-row">                            <div>                                <mat-form-field appearance="outline">                                    <mat-label> Name : </mat-label>                                              <input matInput type="text" formControlName="name"/>                                </mat-form-field>                                <mat-form-field appearance="outline">                                    <mat-label> Image : </mat-label>                                             <input matInput type="text" formControlName="image" />                                </mat-form-field>                            </div>                            <div formArrayName="personality">                                <mat-form-field appearance="outline">                                    <mat-label> Personality 1 : </mat-label>                                      <mat-select formControlName="0">                                        <mat-option value="0"> None </mat-option>                                        <mat-option value="1"> Kind </mat-option>                                        <mat-option value="2"> Peaceful </mat-option>                                        <mat-option value="3"> Leader </mat-option>                                        <mat-option value="4"> Psychopath </mat-option>                                    </mat-select>                                </mat-form-field>                                <mat-form-field appearance="outline">                                    <mat-label> Personality 2 : </mat-label>                                          <mat-select formControlName="1">                                            <mat-option value="0"> None </mat-option>                                            <mat-option value="1"> Kind </mat-option>                                            <mat-option value="2"> Peaceful </mat-option>                                            <mat-option value="3"> Leader </mat-option>                                            <mat-option value="4"> Psychopath </mat-option>                                        </mat-select>                                </mat-form-field>                            </div>                        </div>                    </div>                </div>                   <button mat-stroked-button type="button" (click)="removeContestantByIndex(i)"> Remove contestant </button>             </div>          </div>            </div>    <div formGroupName="events">        <div formArrayName="bloodbath" [hidden]="visible != \'events\'">            <h4> Bloodbaths ! </h4>            <mat-form-field appearance="outline">                <mat-label> Number of bloodbaths : </mat-label>                    <input matInput type="number" step="1" [(ngModel)]="numberEvents[1]" min="0"                 [ngModelOptions]="{standalone: true}" (change)="addEvents(numberEvents[1], 0)"/>            </mat-form-field>            <div *ngFor ="let bloods of bloodbath.controls; let j=index;" [formArrayName] = "j" class="section-row-events">                <mat-form-field appearance="outline">                                    <mat-label> ID : </mat-label>                       <input matInput type="text" formControlName="0" />                                              </mat-form-field>                <mat-form-field appearance="outline">                                    <mat-label> Description : </mat-label>                       <input matInput type="text" formControlName="1" />                                              </mat-form-field>                <mat-form-field appearance="outline">                                    <mat-label> Killer </mat-label>                       <input matInput type="text" formControlName="2" />                                              </mat-form-field>                <mat-form-field appearance="outline">                                    <mat-label> Killed : </mat-label>                       <input matInput type="text" formControlName="3" />                                              </mat-form-field>                <mat-form-field appearance="outline">                                    <mat-label>  Nb_actors </mat-label>                       <input matInput type="text" formControlName="4" />                                              </mat-form-field>                <button mat-stroked-button type="button" (click)="removeEventByIndex(0,j)"> Remove bloodbath </button>             </div>        </div>        <div formArrayName="day" [hidden]="visible != \'events\'">            <h4> Days ! </h4>            <mat-form-field appearance="outline">                <mat-label> Number of days : </mat-label>                    <input matInput type="number" step="1" [(ngModel)]="numberEvents[2]" min="0"                 [ngModelOptions]="{standalone: true}" (change)="addEvents(numberEvents[2], 1)"/>            </mat-form-field>            <div *ngFor ="let days of day.controls; let k=index;" [formArrayName] = "k" class="section-row-events">                <mat-form-field appearance="outline">                                    <mat-label> ID : </mat-label>                       <input matInput type="text" formControlName="0" />                                              </mat-form-field>                <mat-form-field appearance="outline">                                    <mat-label> Description : </mat-label>                       <input matInput type="text" formControlName="1" />                                              </mat-form-field>                <mat-form-field appearance="outline">                                    <mat-label> Killer </mat-label>                       <input matInput type="text" formControlName="2" />                                              </mat-form-field>                <mat-form-field appearance="outline">                                  <mat-label> Killed : </mat-label>                       <input matInput type="text" formControlName="3" />                                              </mat-form-field>                <mat-form-field appearance="outline">                                    <mat-label>  Nb_actors </mat-label>                       <input matInput type="text" formControlName="4" />                                              </mat-form-field>                <button mat-stroked-button type="button" (click)="removeEventByIndex(1,k)"> Remove day </button>             </div>        </div>        <div formArrayName="special" [hidden]="visible != \'special\'">            <h4> Special ! </h4>            <mat-form-field appearance="outline">                <mat-label> Number of specials : </mat-label>                    <input matInput type="number" step="1" [(ngModel)]="numberEvents[3]" min="0"                 [ngModelOptions]="{standalone: true}" (change)="addEvents(numberEvents[3], 2)"/>            </mat-form-field>            <div *ngFor = "let specials of special.controls; let l=index;" [formGroupName] = "l" class="section-row-events special">                <mat-form-field appearance="outline">                                    <mat-label> Special event name : </mat-label>                       <input matInput type="text" formControlName="special_name" />                </mat-form-field>                <div formArrayName = "events">                    <mat-form-field appearance="outline">                        <mat-label> Add special events {{ l }} </mat-label>                            <input matInput type="number" step="1" [(ngModel)]="numberSpecials[l]" min="0"                         [ngModelOptions]="{standalone: true}" (change)="addSpecialEvents(l, numberSpecials[l])"/>                    </mat-form-field>                    <div *ngFor ="let spec_events of getSpecEventFromIndex(l).controls; let m=index;"                        [formArrayName] = "m" class="section-row-events">                        <mat-form-field appearance="outline">                                                <mat-label> ID : </mat-label>                               <input matInput type="text" formControlName="0" />                                                                  </mat-form-field>                        <mat-form-field appearance="outline">                                                        <mat-label> Description : </mat-label>                               <input matInput type="text" formControlName="1" />                               </mat-form-field>                        <mat-form-field appearance="outline">                                                        <mat-label> Killer </mat-label>                               <input matInput type="text" formControlName="2" />                                                                  </mat-form-field>                            <mat-form-field appearance="outline">                                                        <mat-label> Killed : </mat-label>                               <input matInput type="text" formControlName="3" />                        </mat-form-field>                        <mat-form-field appearance="outline">                                                        <mat-label>  Nb_actors </mat-label>                               <input matInput type="text" formControlName="4" />                                     </mat-form-field>                        <button mat-stroked-button type="button" (click)="removeSpecialEventByIndex(l,m)"> Remove bloodbath </button>                     </div>                </div>                <button mat-stroked-button type="button" (click)="removeEventByIndex(2,l)"> Remove special </button>             </div>        </div>    </div>    <button mat-stroked-button type="button" (click)="saveScenario()"> Export scenario </button>    <p>Complete the form to enable button.</p>      <button mat-stroked-button type="submit" [disabled]="!form.valid">Submit</button>    <p [hidden]="!debug"> {{ test() }} </p></form></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DisclaimerComponent', 'selector': 'app-disclaimer'},{'name': 'FormComponent', 'selector': 'app-form'},{'name': 'GameComponent', 'selector': 'app-game'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'ScenarioComponent', 'selector': 'app-scenario'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'FormComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'FormComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
