@@ -1,73 +1,209 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
-    <mat-form-field>
+    <h1> Scenario form ! </h1>
+
+    <mat-form-field appearance="outline">
+        <mat-label> Scenario to edit </mat-label>
+        <mat-select [(value)]="scenario_chosen" (selectionChange)="scenarioChange(scenario_chosen)">
+          <mat-option value="termina"> Fear & Hunger 2 : Termina </mat-option>
+          <mat-option value="copa"> Corpse Party </mat-option>
+          <mat-option value="new"> New scenario </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
 
         <mat-label> Internal Name : </mat-label>  
         <input matInput type="text" formControlName="name"/>
 
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field appearance="outline">
 
         <mat-label> Title: </mat-label> 
         <input matInput type="text" formControlName="title"/>
 
     </mat-form-field>
 
-    <h2> Contestants : </h2> 
+    <mat-form-field appearance="outline">
+        <mat-label> Display section : </mat-label>
+        <mat-select [(value)]="visible">
+          <mat-option value="contestant"> Contestants </mat-option>
+          <mat-option value="events"> Day & Bloodbath events </mat-option>
+          <mat-option value="special"> Special events </mat-option>
+        </mat-select>
+    </mat-form-field>
 
-    <div formArrayName="contestants">    
+    <mat-checkbox [checked]="debug" (change)="toggleDebug()"> 
+        Debug
+    </mat-checkbox>
 
-        <mat-form-field>
+    <h2 [hidden]="visible != 'contestant'"> Contestants : </h2> 
+
+    <div formArrayName="contestants" [hidden]="visible != 'contestant'">    
+
+        <mat-form-field appearance="outline">
             <mat-label> Number of contestants : </mat-label>    
-            <input matInput type="number" step="1" [(ngModel)]="numberContestant" 
+            <input matInput type="number" step="1" [(ngModel)]="numberContestant" min="0" 
         [ngModelOptions]="{standalone: true}" (change)="addContestants(numberContestant)"/>
         </mat-form-field>
 
         <div *ngFor ="let contestant of contestants.controls; let i=index">
 
-            <div [formGroupName]="i">
+            <div [formGroupName]="i" class="section-row">
 
-                <mat-form-field>
-                
-                    <mat-label> ID : </mat-label>         
-                    <input matInput type="text" formControlName="id"/>
+                <img [src]="this.contestants.value[i].image"/>
 
-                </mat-form-field>
+                <div>
 
+                    <mat-form-field appearance="outline">
+                    
+                        <mat-label> ID : </mat-label>         
+                        <input matInput type="text" formControlName="id"/>
 
-                <mat-form-field>
+                    </mat-form-field>
 
-                    <mat-label> Name : </mat-label>          
-                    <input matInput type="text" formControlName="name"/>
+                    <mat-form-field appearance="outline">
 
-                </mat-form-field>
+                        <mat-label> Name : </mat-label>          
+                        <input matInput type="text" formControlName="name"/>
 
-                <mat-form-field>
+                    </mat-form-field>
 
-                    <mat-label> Pronouns : </mat-label>  
-                    <mat-select formControlName="pronouns">
-                        <mat-option value="he"> He/Him </mat-option>
-                        <mat-option value="she"> She/Her </mat-option>
-                        <mat-option value="they"> They/Them </mat-option>
-                        <mat-option value="it"> It/Its </mat-option>
-                    </mat-select>
+                </div>
 
-                </mat-form-field>
-                
-                <mat-form-field>
+                <div>
 
-                    <mat-label> Image : </mat-label>         
-                    <input matInput type="text" formControlName="image" />
+                    <mat-form-field appearance="outline">
 
-                </mat-form-field>
+                        <mat-label> Pronouns : </mat-label>  
+                        <mat-select formControlName="pronouns">
+                            <mat-option value="he"> He/Him </mat-option>
+                            <mat-option value="she"> She/Her </mat-option>
+                            <mat-option value="they"> They/Them </mat-option>
+                            <mat-option value="it"> It/Its </mat-option>
+                        </mat-select>
 
-                <mat-form-field>
+                    </mat-form-field>
+                    
+                    <mat-form-field appearance="outline">
 
-                    <mat-label> Personality traits : </mat-label>          
-                    <input matInput type="text" formControlName="personality" />
+                        <mat-label> Image : </mat-label>         
+                        <input matInput type="text" formControlName="image" />
 
-                </mat-form-field>
+                    </mat-form-field>
+
+                </div>
+
+                <div formArrayName="personality">
+
+                    <mat-form-field appearance="outline">
+
+                        <mat-label> Personality 1 : </mat-label>  
+                        <mat-select formControlName="0">
+                            <mat-option value="0"> None </mat-option>
+                            <mat-option value="1"> Kind </mat-option>
+                            <mat-option value="2"> Peaceful </mat-option>
+                            <mat-option value="3"> Leader </mat-option>
+                            <mat-option value="4"> Psychopath </mat-option>
+                        </mat-select>
+
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+
+                        <mat-label> Personality 2 : </mat-label>  
+                        <mat-select formControlName="1">
+                            <mat-option value="0"> None </mat-option>
+                            <mat-option value="1"> Kind </mat-option>
+                            <mat-option value="2"> Peaceful </mat-option>
+                            <mat-option value="3"> Leader </mat-option>
+                            <mat-option value="4"> Psychopath </mat-option>
+                        </mat-select>
+
+                    </mat-form-field>
+
+                </div>
+
+                <div>
+
+                    <mat-form-field appearance="outline">
+
+                        <mat-label> Friend : </mat-label>         
+                        <input matInput type="text" formControlName="friend" />
+
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+
+                        <mat-label> Enemy : </mat-label>         
+                        <input matInput type="text" formControlName="enemy" />
+
+                    </mat-form-field>
+
+                </div>
+
+                <div formGroupName="transform">
+
+                    <div>
+
+                        <h4> Transformation : </h4>
+
+                        <div class="trans-row">
+
+                            <div>
+
+                                <mat-form-field appearance="outline">
+
+                                    <mat-label> Name : </mat-label>          
+                                    <input matInput type="text" formControlName="name"/>
+
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline">
+
+                                    <mat-label> Image : </mat-label>         
+                                    <input matInput type="text" formControlName="image" />
+
+                                </mat-form-field>
+
+                            </div>
+
+                            <div formArrayName="personality">
+
+                                <mat-form-field appearance="outline">
+
+                                    <mat-label> Personality 1 : </mat-label>  
+                                    <mat-select formControlName="0">
+                                        <mat-option value="0"> None </mat-option>
+                                        <mat-option value="1"> Kind </mat-option>
+                                        <mat-option value="2"> Peaceful </mat-option>
+                                        <mat-option value="3"> Leader </mat-option>
+                                        <mat-option value="4"> Psychopath </mat-option>
+                                    </mat-select>
+
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline">
+
+                                    <mat-label> Personality 2 : </mat-label>  
+                                        <mat-select formControlName="1">
+                                            <mat-option value="0"> None </mat-option>
+                                            <mat-option value="1"> Kind </mat-option>
+                                            <mat-option value="2"> Peaceful </mat-option>
+                                            <mat-option value="3"> Leader </mat-option>
+                                            <mat-option value="4"> Psychopath </mat-option>
+                                        </mat-select>
+
+                                </mat-form-field>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
    
                 <button mat-stroked-button type="button" (click)="removeContestantByIndex(i)"> Remove contestant </button> 
 
@@ -77,38 +213,210 @@
         
     </div>
 
-    <div formArrayName="events">
+    <div formGroupName="events">
 
-        <div formArrayName="bloodbath">
+        <div formArrayName="bloodbath" [hidden]="visible != 'events'">
 
             <h4> Bloodbaths ! </h4>
 
-            <mat-form-field>
+            <mat-form-field appearance="outline">
                 <mat-label> Number of bloodbaths : </mat-label>    
-                <input matInput type="number" step="1" [(ngModel)]="numberEvents[1]" 
-                [ngModelOptions]="{standalone: true}" (change)="addEvents(numberEvents[1])"/>
+                <input matInput type="number" step="1" [(ngModel)]="numberEvents[1]" min="0" 
+                [ngModelOptions]="{standalone: true}" (change)="addEvents(numberEvents[1], 0)"/>
             </mat-form-field>
 
-            <!--
-            <div *ngFor ="let blood of bloodbath.controls; let j=index">
+            <div *ngFor ="let bloods of bloodbath.controls; let j=index;" [formArrayName] = "j" class="section-row-events">
 
-                <h6> hi!!!! </h6>
+                <mat-form-field appearance="outline">
+                
+                    <mat-label> ID : </mat-label>   
+                    <input matInput type="text" formControlName="0" />      
+                        
 
-                <button mat-stroked-button type="button" (click)="removeEventByIndex(j)"> Remove event </button> 
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                
+                    <mat-label> Description : </mat-label>   
+                    <input matInput type="text" formControlName="1" />      
+                        
+
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                
+                    <mat-label> Killer </mat-label>   
+                    <input matInput type="text" formControlName="2" />      
+                        
+
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                
+                    <mat-label> Killed : </mat-label>   
+                    <input matInput type="text" formControlName="3" />      
+                        
+
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                
+                    <mat-label>  Nb_actors </mat-label>   
+                    <input matInput type="text" formControlName="4" />      
+                        
+
+                </mat-form-field>
+
+                <button mat-stroked-button type="button" (click)="removeEventByIndex(0,j)"> Remove bloodbath </button> 
 
             </div>
-            -->
+
+        </div>
+
+        <div formArrayName="day" [hidden]="visible != 'events'">
+
+            <h4> Days ! </h4>
+
+            <mat-form-field appearance="outline">
+                <mat-label> Number of days : </mat-label>    
+                <input matInput type="number" step="1" [(ngModel)]="numberEvents[2]" min="0" 
+                [ngModelOptions]="{standalone: true}" (change)="addEvents(numberEvents[2], 1)"/>
+            </mat-form-field>
+
+            <div *ngFor ="let days of day.controls; let k=index;" [formArrayName] = "k" class="section-row-events">
+
+                <mat-form-field appearance="outline">
+                
+                    <mat-label> ID : </mat-label>   
+                    <input matInput type="text" formControlName="0" />      
+                        
+
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                
+                    <mat-label> Description : </mat-label>   
+                    <input matInput type="text" formControlName="1" />      
+                        
+
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                
+                    <mat-label> Killer </mat-label>   
+                    <input matInput type="text" formControlName="2" />      
+                        
+
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+              
+                    <mat-label> Killed : </mat-label>   
+                    <input matInput type="text" formControlName="3" />      
+                        
+
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                
+                    <mat-label>  Nb_actors </mat-label>   
+                    <input matInput type="text" formControlName="4" />      
+                        
+
+                </mat-form-field>
+
+                <button mat-stroked-button type="button" (click)="removeEventByIndex(1,k)"> Remove day </button> 
+
+            </div>
+
+        </div>
+
+        <div formArrayName="special" [hidden]="visible != 'special'">
+
+            <h4> Special ! </h4>
+
+            <mat-form-field appearance="outline">
+                <mat-label> Number of specials : </mat-label>    
+                <input matInput type="number" step="1" [(ngModel)]="numberEvents[3]" min="0" 
+                [ngModelOptions]="{standalone: true}" (change)="addEvents(numberEvents[3], 2)"/>
+            </mat-form-field>
+
+            <div *ngFor = "let specials of special.controls; let l=index;" [formGroupName] = "l" class="section-row-events special">
+
+                <mat-form-field appearance="outline">
+                
+                    <mat-label> Special event name : </mat-label>   
+                    <input matInput type="text" formControlName="special_name" />
+
+                </mat-form-field>
+
+                <div formArrayName = "events">
+
+                    <mat-form-field appearance="outline">
+                        <mat-label> Add special events {{ l }} </mat-label>    
+                        <input matInput type="number" step="1" [(ngModel)]="numberSpecials[l]" min="0" 
+                        [ngModelOptions]="{standalone: true}" (change)="addSpecialEvents(l, numberSpecials[l])"/>
+                    </mat-form-field>
+
+
+                    <div *ngFor ="let spec_events of getSpecEventFromIndex(l).controls; let m=index;"
+                        [formArrayName] = "m" class="section-row-events">
+
+                        <mat-form-field appearance="outline">
+                    
+                            <mat-label> ID : </mat-label>   
+                            <input matInput type="text" formControlName="0" />      
+                                    
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+                            
+                            <mat-label> Description : </mat-label>   
+                            <input matInput type="text" formControlName="1" />       
+
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+                            
+                            <mat-label> Killer </mat-label>   
+                            <input matInput type="text" formControlName="2" />      
+                                    
+                        </mat-form-field>
+
+                            <mat-form-field appearance="outline">
+                            
+                            <mat-label> Killed : </mat-label>   
+                            <input matInput type="text" formControlName="3" />
+
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+                            
+                            <mat-label>  Nb_actors </mat-label>   
+                            <input matInput type="text" formControlName="4" />             
+
+                        </mat-form-field>
+
+                        <button mat-stroked-button type="button" (click)="removeSpecialEventByIndex(l,m)"> Remove bloodbath </button> 
+
+                    </div>
+
+                </div>
+
+                <button mat-stroked-button type="button" (click)="removeEventByIndex(2,l)"> Remove special </button> 
+
+            </div>
 
         </div>
 
     </div>
 
-    <button mat-stroked-button type="button" (click)="saveContestants('termina2.json')"> Export scenario </button>
+    <button mat-stroked-button type="button" (click)="saveContestants()"> Export scenario </button>
 
     <p>Complete the form to enable button.</p>  
     <button mat-stroked-button type="submit" [disabled]="!form.valid">Submit</button>
 
-    <p> {{ test() }} </p>
+    <p [hidden]="!debug"> {{ test() }} </p>
 
 
 </form>

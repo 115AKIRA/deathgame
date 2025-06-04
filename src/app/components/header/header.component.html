@@ -1,3 +1,24 @@
 <header>
-    <h1> HEADER!!! </h1>
+
+    <div>
+
+        <h1> Death game simulator (WIP version) </h1>
+
+        <mat-checkbox (change)="app.disclaimer.toggleCensor()" [checked]="app.disclaimer.getIs_censored()" 
+        *ngIf="(hasBeenToHome())"> 
+            Toggle censorship
+        </mat-checkbox>
+
+    </div>
+
+    <p> By : AKIRA115 </p>
+
+    <div>
+
+        <a routerLink="/home" *ngIf="(hasBeenToHome())"> Home </a>
+        <a routerLink="/scenario" *ngIf="(hasBeenToHome())"> Scenario </a>
+        <a routerLink="/game" *ngIf="(hasBeenToHome())"> Game </a>
+
+    </div>
+
 </header>

@@ -9,6 +9,8 @@ import { HomeComponent } from '../home/home.component';
 
 import { FormComponent } from '../form/form.component';
 
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-scenario',
   providers: [],
@@ -17,8 +19,6 @@ import { FormComponent } from '../form/form.component';
   styleUrl: './scenario.component.scss'
 })
 export class ScenarioComponent {
-
-  private home = new HomeComponent;
 
   private name = "scenario name";
 

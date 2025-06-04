@@ -1,0 +1,140 @@
+
+.section-row {
+
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    margin: 0 0 10px 0;
+
+}
+
+img {
+
+    height: 100px;
+    width: 100px;
+    margin: 40px 10px 0 0;
+    align-self: center;
+    border: 1px solid black;
+
+}
+
+h1 {
+
+    margin-bottom: 20px !important;
+    margin-top: 10px !important;
+    text-align: center;
+    font-size: 34px;
+
+}
+
+form > * {
+
+    margin: 5px 10px;
+
+}
+
+button {
+
+    margin-top: 40px;
+    align-self: center;
+
+}
+
+.section-row div {
+
+    text-align: center;
+    margin: 0 10px;
+    padding: 0;
+    flex: 0;
+
+}
+
+.section-row > div {
+
+    margin: 0 10px 0 0;
+
+}
+
+.trans-row {
+
+    display: flex;
+    flex-direction: row;
+
+}
+
+.trans-row div {
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+.trans-row div mat-form-field {
+
+    margin: 0 10px;
+
+}
+
+mat-form-field {
+
+    width: 175px;
+    height: 80px;
+    font-size: 16px;
+
+}
+
+mat-form-field input {
+
+    vertical-align: bottom;
+
+}
+
+mat-form-label {
+
+    font-size: 12px;
+
+}
+
+.section-row-events {
+
+    margin: 0;
+
+}
+
+.section-row-events mat-form-field {
+
+    margin: 0 10px;
+
+}
+
+.section-row-events mat-form-field:first-child {
+
+    margin: 0 0 10px 0;
+
+}
+
+.section-row-events button {
+
+    align-self: center;
+    margin: 0 0 0 10px;
+
+}
+
+.special {
+
+    display: flex;
+    flex-direction: row;
+
+}
+
+.special div[formArrayName = "events"] mat-form-field:first-child {
+
+    margin: 0 0 0 10px;
+
+}
+
+.special div[formArrayName = "events"] + button {
+
+    align-self: flex-start;
+
+}

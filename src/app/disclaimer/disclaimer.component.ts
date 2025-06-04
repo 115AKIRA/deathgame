@@ -28,12 +28,13 @@ export class DisclaimerComponent {
     
     this.is_censored = !(this.is_censored);
     sessionStorage.setItem('is_censored', JSON.stringify(this.is_censored));
+    console.log(this.is_censored);
 
   }
 
   getIs_censored(): Boolean {
     
-    return this.is_censored;
+    return (sessionStorage.getItem('is_censored') === 'true');
   
   }
 
