@@ -1,6 +1,6 @@
 # Deathgame
 
-Link to online documentation made with Compodoc : https://115akira.github.io/deathgame-documentation/
+Link to online documentation made with Compodoc : https://115akira.github.io/deathgame-documentation/. The code is also documented.
 
 __Deathgame__ is an online app inspired by Brantsteele's Hunger Games simulator and Orteil's Murder Games. 
 The goal of this project is to make a game with the ability to edit scenarios like the Hunger Game Simulator, while also having lots of options for the participants like in Murder Games.
@@ -25,3 +25,10 @@ Events exist in 3 types :
 - Bloodbath
 - Day events
 - Special events (special events are split into two part : an event name and sub-events. A special event can have multiple sub-events, though a sub-event can only be the sub-event of one special event)
+
+## Architecture specifications :
+This project has a 4 main pages :
+- disclaimer : entrypoint of the application, warns users about the content in this app and also provides information on how cookies are used (only essential cookies are used).
+- home : homepage, can chose a scenario to edit, or select some options prior to playing the game
+- game : WIP, page where the actual hunger game-like game takes place
+- scenario : CRUD for the scenarios
