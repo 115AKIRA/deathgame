@@ -19,7 +19,7 @@
     <h3> Select game options </h3>
 
     <div class="form-check" *ngFor="let optionName of getOptionNames(); index as i">
-        <mat-checkbox (change)="setOptionWithName(optionName)" [checked]="getOptionWithName(optionName)">
+        <mat-checkbox (change)="setOption(i)" [checked]="getOption(i)">
             {{ i }} - {{ optionName }}
         </mat-checkbox> 
     </div>
